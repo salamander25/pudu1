@@ -142,6 +142,17 @@
       font-size: 12px;
       opacity: 0.9;
     }
+    .form-status {
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+    .form-status.ok {
+      color: #bbf7d0;
+    }
+    .form-status.err {
+      color: #fca5a5;
+    }
     section {
       padding: 32px 0;
       border-top: 1px solid rgba(15,23,42,0.9);
@@ -743,8 +754,9 @@
                 <button type="submit" class="btn-primary" style="width:100%;">Send My Robotics Snapshot</button>
               </div>
               <div id="success-message" class="success-message">
-                Thank you! Your details have been captured. We’ll review and follow up shortly.
+                Thank you! Your details have been captured. We'll review and follow up shortly.
               </div>
+              <div id="form-status" class="form-status"></div>
             </form>
           </div>
         </div>
@@ -863,26 +875,91 @@
     // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Simple client-side form handler
+    // Lead form handler with Formspree + WhatsApp click-to-chat
     const form = document.getElementById('snapshot-form');
     const successMessage = document.getElementById('success-message');
+    const statusBox = document.getElementById('form-status');
+    const submitBtn = form.querySelector('button[type=\"submit\"]');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // stop page reload
+    // Replace with your Formspree endpoint and your WhatsApp number (digits only)
+    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+    const WHATSAPP_NUMBER = '15551234567'; // e.g., 15551234567
+    // Optional: your serverless webhook that calls WhatsApp Cloud API
+    const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
 
-      // In a real deployment, this is where you'd send data to your backend / CRM.
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      statusBox.style.display = 'none';
+      statusBox.textContent = '';
+
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      console.log('Snapshot form submitted:', data);
 
-      // Show success message
-      successMessage.style.display = 'block';
+      // Guardrail: require a real endpoint
+      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
+        statusBox.textContent = 'Add your Formspree endpoint (FORM_ENDPOINT) to activate submissions.';
+        statusBox.className = 'form-status err';
+        statusBox.style.display = 'block';
+        return;
+      }
 
-      // Scroll to message
-      successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Send to Formspree (email/CRM)
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
 
-      // Reset form fields
-      form.reset();
+      try {
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Form submit failed');
+        }
+
+        // Hit your WhatsApp Cloud API webhook (serverless) if provided
+        if (WA_WEBHOOK && !WA_WEBHOOK.includes('your-serverless-endpoint')) {
+          fetch(WA_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: data.name,
+              company: data.company,
+              role: data.role,
+              email: data.email,
+              phone: data.phone,
+              location: data.location,
+              type: data.type,
+              idea: data.idea
+            })
+          }).catch(() => {
+            // Best-effort; do not block user on webhook failure
+            console.warn('WhatsApp webhook call failed');
+          });
+        }
+
+        // Success UI
+        successMessage.style.display = 'block';
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        form.reset();
+
+        // WhatsApp click-to-chat (opens a chat with prefilled info)
+        if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
+          const msg = encodeURIComponent(
+            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nUse case: ${data.idea || ''}`
+          );
+          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
+        }
+      } catch (err) {
+        statusBox.textContent = 'Could not send. Please try again or email us directly.';
+        statusBox.className = 'form-status err';
+        statusBox.style.display = 'block';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
     });
   </script>
 </body>
