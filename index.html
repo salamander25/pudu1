@@ -153,7 +153,7 @@
     .form-status.err {
       color: #fca5a5;
     }
-    section {
+        section {
       padding: 32px 0;
       border-top: 1px solid rgba(15,23,42,0.9);
     }
@@ -413,26 +413,26 @@
       <!-- HERO -->
       <section class="hero">
         <div>
-          <h1 class="hero-title">Luxury Service Robots for Restaurants, Hotels, Clinics & Events</h1>
+          <h1 class="hero-title">Service Robots That Boost Revenue and Cut Stress</h1>
           <p class="hero-subtitle">
-            Bring the “wow” factor to your guests while reducing labor stress. We design and deploy Pudu Robotics
-            solutions that glide through your space, serve your guests, and quietly pay for themselves.
+            Book a quick call to see how Pudu robots handle service, cleaning, and delivery for restaurants, hotels,
+            clinics, events, and warehouses.
           </p>
           <div class="hero-badges">
             <span class="badge">Pudu Robotics Partner</span>
-            <span class="badge">White-Glove Deployment</span>
-            <span class="badge">No-Pressure Consultation</span>
+            <span class="badge">Local Deployments</span>
+            <span class="badge">Priority Slots Available</span>
           </div>
           <div class="hero-actions">
-            <a href="#book">
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
               <button class="btn-primary" type="button">Schedule a Robotics Discovery Call</button>
             </a>
-            <a href="#why">
+            <a href="#videos">
               <button class="btn-secondary" type="button">Watch / Learn First</button>
             </a>
           </div>
           <div class="hero-note">
-            20–30 minute Zoom. No obligation. If robots aren’t a fit, we’ll tell you.
+            20?30 minute Zoom. No obligation. Local only; out-of-state not available right now.
           </div>
         </div>
         <div class="hero-visual">
@@ -533,10 +533,10 @@
           </div>
         </div>
         <div class="video-cta">
-          <a href="#book">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
             <button class="btn-primary" type="button">Book Zoom / Local Demo</button>
           </a>
-          <a href="#book">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
             <button class="btn-secondary" type="button">Request Priority Purchase Call</button>
           </a>
           <div class="video-cta-note">Local meetings only; out-of-state bookings are not available right now.</div>
@@ -674,7 +674,7 @@
           </div>
         </div>
         <p style="margin-top:16px;">
-          <a href="#book">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
             <button class="btn-primary" type="button">Start with a Complimentary Discovery Call</button>
           </a>
         </p>
@@ -686,12 +686,10 @@
         <div class="two-column">
           <div>
             <p>
-              Share a few details below and we’ll send you a brief snapshot of how robots could fit into your business –
-              plus an invite to book a Zoom call with our robotics concierge.
+              Get a tailored snapshot of how robots could fit your space plus a fast path to book. Priority alerts go to
+              WhatsApp for franchise, warehouse, and bulk buyers.
             </p>
-            <p class="muted">
-              We respect your time and attention. No spam, no hard sell – just clear insight about what’s possible.
-            </p>
+            <p class="muted">We keep it simple: no spam, no pressure, just clear next steps.</p>
           </div>
           <div>
             <form id="snapshot-form">
@@ -730,7 +728,7 @@
                 <label for="type">Business Type *</label>
                 <select id="type" name="type" required>
                   <option value="">Select...</option>
-                  <option>Restaurant / Café</option>
+                  <option>Restaurant / Cafe</option>
                   <option>Hotel / Resort</option>
                   <option>Hospital / Clinic</option>
                   <option>Office / Coworking</option>
@@ -739,9 +737,45 @@
                 </select>
               </div>
               <div>
+                <label for="scale">Volume / Scale *</label>
+                <select id="scale" name="scale" required>
+                  <option value="">Select...</option>
+                  <option>Single location pilot</option>
+                  <option>Multi-location (2-5)</option>
+                  <option>Franchise group / chain (6+)</option>
+                  <option>Warehouse / logistics hub</option>
+                </select>
+              </div>
+              <div>
+                <label for="timeline">Desired timeline *</label>
+                <select id="timeline" name="timeline" required>
+                  <option value="">Select...</option>
+                  <option>ASAP / priority</option>
+                  <option>This month</option>
+                  <option>Next 2-3 months</option>
+                  <option>Exploring / planning</option>
+                </select>
+              </div>
+              <div>
+                <label for="decision">Your role in decision *</label>
+                <select id="decision" name="decision" required>
+                  <option value="">Select...</option>
+                  <option>Final decision maker</option>
+                  <option>Recommender / evaluator</option>
+                  <option>Operations lead</option>
+                  <option>Finance / procurement</option>
+                </select>
+              </div>
+              <div>
                 <label for="idea">Where do you imagine using robots?</label>
                 <textarea id="idea" name="idea"
                           placeholder="Food running, bottle service, lobby greeting, amenity delivery, etc."></textarea>
+              </div>
+              <div class="checkbox-row">
+                <input id="priority" type="checkbox" name="priority">
+                <label for="priority">
+                  I want priority treatment for bulk/franchise/warehouse deployment.
+                </label>
               </div>
               <div class="checkbox-row">
                 <input id="optin" type="checkbox" name="optin">
@@ -766,55 +800,48 @@
       <section id="book">
         <h2>Book Your Robotics Discovery Call</h2>
         <p>
-          Choose a time that works for you. In 20-30 minutes, we'll map your space, estimate how many robots make sense
-          (if any), and outline potential savings and guest impact. Local meetings only; out-of-state bookings are not
-          available right now.
+          20?30 minutes. Local only. Pick a Zoom consult or request priority purchase with Jason.
         </p>
         <div class="cta-choices">
           <div class="cta-card">
             <div class="cta-badge">Recommended</div>
             <h3>Zoom or Local Live Demo</h3>
-            <p style="opacity:0.9;">We prioritize nearby venues. Pick a Zoom consult or request an in-person live demo if you're local.</p>
+            <p style="opacity:0.9;">Map routes, staffing impact, and guest flow fast.</p>
             <ul>
-              <li>Map routes and staffing impact fast</li>
-              <li>See guest-facing flows and back-of-house support</li>
-              <li>Decide if robots are a fit without pressure</li>
+              <li>See service + cleaning + delivery options</li>
+              <li>Local deployments only</li>
+              <li>No pressure; clear next steps</li>
             </ul>
-            <a href="#book">
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
               <button class="btn-primary" type="button" style="width:100%;">Schedule Zoom / Local Demo</button>
             </a>
-            <div class="cta-note">Out-of-state meetings are not available at this time.</div>
+            <div class="cta-note">Out-of-state meetings are not available.</div>
           </div>
           <div class="cta-card">
             <div class="cta-badge" style="background:rgba(14,165,233,0.16); color:#bae6fd;">Priority Purchase</div>
             <h3>Purchase with Jason Shi (Priority Queue)</h3>
-            <p style="opacity:0.9;">If you already know you want robots, meet directly with Jason to finalize and move into the priority deployment queue.</p>
+            <p style="opacity:0.9;">Ready to move now? Lock priority scheduling and paperwork review.</p>
             <ul>
-              <li>Fast-track consultation + paperwork review</li>
-              <li>Lock deployment dates ahead of the standard queue</li>
-              <li>Designed for committed buyers</li>
+              <li>Fast-track consultation + docs</li>
+              <li>Queue jump for deployment</li>
+              <li>Ideal for bulk/franchise/warehouse</li>
             </ul>
-            <a href="#book">
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
               <button class="btn-secondary" type="button" style="width:100%;">Request Priority Purchase Call</button>
             </a>
             <div class="cta-note">Limited priority slots; local deployments preferred.</div>
           </div>
         </div>
         <p style="margin-top:12px;">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+            <button class="btn-primary" type="button" style="width:100%;">Book on Calendly (30 min)</button>
+          </a>
+        </p>
+        <p style="margin-top:8px;">
           <a href="https://wa.me/19495915731" target="_blank" rel="noreferrer">
             <button class="btn-secondary" type="button" style="width:100%;">Chat on WhatsApp Now</button>
           </a>
         </p>
-        <!-- Replace this with your actual Calendly embed or scheduling tool -->
-        <div class="card" style="margin-top:16px;">
-          <p class="muted">
-            Calendly embed or link goes here.<br><br>
-            Booking link:<br>
-            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-              Open my Calendly scheduling page
-            </a>
-          </p>
-        </div>
       </section>
 
       <!-- TEAM + FAQ -->
@@ -891,7 +918,6 @@
     const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
     // Optional: your serverless webhook that calls WhatsApp Cloud API
     const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
-
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       statusBox.style.display = 'none';
@@ -937,6 +963,10 @@
               phone: data.phone,
               location: data.location,
               type: data.type,
+              scale: data.scale,
+              timeline: data.timeline,
+              decision: data.decision,
+              priority: data.priority ? 'Yes' : 'No',
               idea: data.idea
             })
           }).catch(() => {
@@ -953,7 +983,7 @@
         // WhatsApp click-to-chat (opens a chat with prefilled info)
         if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
           const msg = encodeURIComponent(
-            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nUse case: ${data.idea || ''}`
+            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
           );
           window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
         }
@@ -966,6 +996,7 @@
         submitBtn.textContent = originalLabel;
       }
     });
+
   </script>
 </body>
 </html>
