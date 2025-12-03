@@ -394,8 +394,52 @@
       margin-top: 8px;
     }
   </style>
+  <script>
+    // Analytics placeholders: replace IDs to activate tracking
+    (function() {
+      const GA_MEASUREMENT_ID = 'G-GNCV8W5P8N'; // GA4 measurement ID
+      if (GA_MEASUREMENT_ID && !GA_MEASUREMENT_ID.includes('XXXX')) {
+        const gaScript = document.createElement('script');
+        gaScript.async = true;
+        gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+        document.head.appendChild(gaScript);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', GA_MEASUREMENT_ID);
+      }
+
+      const META_PIXEL_ID = '1814913049387064'; // Meta pixel ID
+      if (META_PIXEL_ID && META_PIXEL_ID !== 'META_PIXEL_ID') {
+        !(function(f,b,e,v,n,t,s){
+          if (f.fbq) return; n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0';
+          n.queue=[]; t=b.createElement(e); t.async=!0;
+          t.src=v; s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s);
+        })(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', META_PIXEL_ID);
+        fbq('track', 'PageView');
+      }
+
+      const TIKTOK_PIXEL_ID = 'TIKTOK_PIXEL_ID'; // TikTok pixel ID
+      if (TIKTOK_PIXEL_ID && TIKTOK_PIXEL_ID !== 'TIKTOK_PIXEL_ID') {
+        !function (w, d, t) {
+          w.TiktokAnalyticsObject = t; var ttq = w[t] = w[t] || [];
+          ttq.methods = ['page','track','identify','instances','debug','on','off','once','ready','setUserProperties','setVisitorProperties','reset'];
+          ttq.setAndDefer = function(t, e) { t[e] = function() { t.push([e].concat(Array.prototype.slice.call(arguments,0))); };
+          for (var i = 0; i < ttq.methods.length; i++) ttq.setAndDefer(ttq, ttq.methods[i]); };
+          ttq.setAndDefer(ttq, 'setUserProperties'); ttq.instance = function(t) { var e = ttq._i = ttq._i || {}; e[t] = e[t] || []; e[t]._i = t; e[t].track = function() { ttq.push([t].concat(Array.prototype.slice.call(arguments,0))); }; return e[t]; };
+          ttq.load = function(e, n) { var i = 'https://analytics.tiktok.com/i18n/pixel/events.js'; ttq._t = ttq._t || {}; ttq._t[e] = +new Date; ttq._o = ttq._o || {}; ttq._o[e] = n || {}; var o = document.createElement('script'); o.type = 'text/javascript'; o.async = true; o.src = i + '?sdkid=' + e + '&lib=' + t; var a = document.getElementsByTagName('script')[0]; a.parentNode.insertBefore(o, a); };
+          ttq.load(TIKTOK_PIXEL_ID); ttq.page();
+        }(window, document, 'ttq');
+      }
+    })();
+  </script>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1814913049387064&ev=PageView&noscript=1" /></noscript>
   <div class="page">
     <header>
       <div class="brand">Sol Solar Robotics (Referral Partner)</div>
@@ -409,45 +453,47 @@
       </nav>
     </header>
 
-    <main>
-      <!-- HERO -->
-      <section class="hero">
+    <main>      <!-- HERO -->
+      <section class="hero" id="hero">
         <div>
-          <h1 class="hero-title">Service Robots That Boost Revenue and Cut Stress</h1>
+          <h1 class="hero-title">D9 Service Robots + Solar Savings for San Diego and SoCal</h1>
           <p class="hero-subtitle">
-            Book a quick call to see how Pudu robots handle service, cleaning, and delivery for restaurants, hotels,
-            clinics, events, and warehouses.
+            Book a fast strategy call to see the new D9 robot dog, lock in a demo, and map your solar savings. One place
+            to watch the launch, chat instantly, and get next-step pricing.
           </p>
           <div class="hero-badges">
+            <span class="badge">Featured: D9 robot dog</span>
             <span class="badge">Pudu Robotics Partner</span>
-            <span class="badge">Referral Partner to Dash Robotics</span>
-            <span class="badge">Priority Slots Available</span>
+            <span class="badge">Local + Priority Slots</span>
           </div>
           <div class="hero-actions">
-            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-              <button class="btn-primary" type="button">Schedule a Robotics Discovery Call</button>
+            <a href="https://calendly.com/salvadorcastillo2020/30min?utm_source=site&utm_medium=cta&utm_campaign=hero" target="_blank" rel="noreferrer">
+              <button class="btn-primary" type="button" data-track="cta_book">Book D9 / Solar Strategy Call</button>
             </a>
-            <a href="#videos">
-              <button class="btn-secondary" type="button">Watch / Learn First</button>
+            <a href="https://wa.me/19495915731?text=Hi%20Rico%2C%20I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
+              <button class="btn-secondary" type="button" data-track="cta_whatsapp">Instant WhatsApp Chat</button>
+            </a>
+            <a href="sms:YOUR_SMS_NUMBER?&body=I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
+              <button class="btn-secondary" type="button" data-track="cta_sms">Text Me for a Demo (SMS)</button>
             </a>
           </div>
           <div class="hero-note">
-            20–30 minute Zoom. No obligation. Local only; out-of-state not available right now. Sol Solar operates as a
-            referral partner to Dash Robotics.
+            20-30 minute Zoom or local meet. Priority for San Diego restaurants, venues, warehouses, and homeowners.
           </div>
         </div>
         <div class="hero-visual">
-          <h3>Imagine This in Your Space</h3>
-          <p>
-            A graceful service robot glides through your dining room or lobby, guests smiling, phones filming.
-            Staff focus on people, not running back and forth. At the end of the month, the numbers make sense.
-          </p>
+          <div class="video-frame">
+            <iframe src="https://www.youtube.com/embed/gH7DLaQlsuc?si=63LBMBUBqj0YgkUz"
+                    title="D9 Robot Dog Launch"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+          </div>
+          <div class="video-caption">Featured: D9 robot dog launch - trending showpiece for lobby greeting and guest wow.</div>
           <div class="pill-row">
-            <span class="pill">Food Running</span>
-            <span class="pill">Lobby Greeting</span>
-            <span class="pill">Bottle Service</span>
-            <span class="pill">Amenity Delivery</span>
-            <span class="pill">Back-of-House Support</span>
+            <span class="pill">Robot demos</span>
+            <span class="pill">Solar savings</span>
+            <span class="pill">Deployment plan</span>
+            <span class="pill">Financing options</span>
           </div>
         </div>
       </section>
@@ -903,6 +949,21 @@
       Pudu Robotics is a registered trademark of its respective owner. All rights reserved.
     </footer>
   </div>
+
+  <script>
+    function trackEvent(name) {
+      try { if (typeof gtag === 'function') { gtag('event', name); } } catch (e) {}
+      try { if (typeof fbq === 'function') { fbq('trackCustom', name); } } catch (e) {}
+      try { if (typeof ttq !== 'undefined') { ttq.track(name); } } catch (e) {}
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('[data-track]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          trackEvent(el.getAttribute('data-track'));
+        });
+      });
+    });
+  </script>
 
   <script>
     // Set year in footer
