@@ -7,52 +7,66 @@
   <meta name="description"
         content="Luxury Pudu Robotics solutions for restaurants, hotels, clinics, offices, and events. Frictionless deployment by Dash Robotics.">
   <style>
-<!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WX9NNG2X');</script>
-  <!-- End Google Tag Manager -->
-
+    :root {
+      --bg: #030305;
+      --bg-alt: radial-gradient(circle at 20% 20%, rgba(50, 110, 190, 0.08), rgba(34, 197, 94, 0.05) 22%, #030305 50%);
+      --panel: rgba(8, 10, 18, 0.94);
+      --panel-strong: rgba(6, 8, 14, 0.96);
+      --border: rgba(100, 120, 155, 0.35);
+      --text: #e7ecf4;
+      --muted: #8f99ad;
+      --accent: #4ade80;
+      --accent-2: #60a5fa;
+      --shadow: 0 32px 90px rgba(0, 0, 0, 0.65);
+    }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #05070b;
-      color: #f5f5f5;
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      background-image: var(--bg-alt);
+      background-attachment: fixed;
+      color: var(--text);
       line-height: 1.6;
     }
-    a { color: #7dd3fc; text-decoration: none; }
+    a { color: var(--accent-2); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .page {
-      max-width: 1120px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 24px 16px 80px;
+      padding: 32px 18px 96px;
     }
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 32px;
+      padding: 10px 0 28px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
     }
     .brand {
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-size: 14px;
+      font-size: 13px;
+      color: var(--accent);
     }
     .nav-links a {
       margin-left: 20px;
       font-size: 14px;
       opacity: 0.9;
+      padding: 6px 8px;
+      border-radius: 10px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .nav-links a:hover {
+      background: rgba(96, 165, 250, 0.08);
+      color: #fff;
     }
     .hero {
       display: grid;
-      grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
-      gap: 32px;
-      padding: 32px 0 48px;
+      grid-template-columns: minmax(0,1.25fr) minmax(0,1fr);
+      gap: 36px;
+      padding: 36px 0 52px;
       align-items: center;
     }
     @media (max-width: 800px) {
@@ -66,30 +80,35 @@
       }
     }
     .hero-title {
-      font-size: clamp(32px, 4vw, 44px);
-      line-height: 1.1;
-      margin-bottom: 16px;
+      font-size: clamp(34px, 4.6vw, 48px);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+      color: #f5f8ff;
     }
     .hero-subtitle {
       font-size: 17px;
-      max-width: 540px;
-      opacity: 0.9;
-      margin-bottom: 20px;
+      max-width: 560px;
+      opacity: 0.88;
+      margin-bottom: 22px;
+      color: var(--muted);
     }
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 10px;
       margin-bottom: 24px;
     }
     .badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
+      padding: 7px 11px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
       font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.12em;
       opacity: 0.9;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(8px);
     }
     .hero-actions {
       display: flex;
@@ -99,34 +118,59 @@
     }
     .btn-primary, .btn-secondary {
       padding: 12px 20px;
-      border-radius: 999px;
+      border-radius: 12px;
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 600;
       border: none;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      letter-spacing: 0.01em;
+      box-shadow: 0 12px 30px rgba(56, 227, 165, 0.18);
+      transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #22c55e, #0ea5e9);
-      color: #020617;
+      background: linear-gradient(135deg, #0ea5e9, #5eead4);
+      color: #021019;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(94, 234, 212, 0.28);
     }
     .btn-secondary {
-      background: transparent;
+      background: rgba(255,255,255,0.04);
       color: #e5e7eb;
-      border: 1px solid rgba(148,163,184,0.7);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(96, 165, 250, 0.18);
     }
     .hero-note {
       font-size: 13px;
-      opacity: 0.8;
+      opacity: 0.82;
+      color: var(--muted);
     }
     .hero-visual {
       border-radius: 24px;
-      border: 1px solid rgba(148,163,184,0.6);
+      border: 1px solid var(--border);
       padding: 18px;
-      background: radial-gradient(circle at top left, #0f172a, #020617 55%);
-      box-shadow: 0 25px 60px rgba(15,23,42,0.85);
+      background: linear-gradient(145deg, rgba(12,14,24,0.96), rgba(10,12,20,0.9));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      inset: -30% 10% auto auto;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(56, 227, 165, 0.18), transparent 60%);
+      filter: blur(30px);
+      opacity: 0.7;
+      pointer-events: none;
     }
     .hero-visual h3 {
       margin-top: 0;
@@ -143,10 +187,10 @@
       margin-top: 12px;
     }
     .pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(148,163,184,0.6);
+      padding: 5px 11px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
       font-size: 12px;
       opacity: 0.9;
     }
@@ -162,16 +206,18 @@
       color: #fca5a5;
     }
         section {
-      padding: 32px 0;
-      border-top: 1px solid rgba(15,23,42,0.9);
+      padding: 34px 0;
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
     section h2 {
       font-size: 24px;
       margin-bottom: 16px;
+      letter-spacing: -0.01em;
     }
     section p {
       font-size: 15px;
       opacity: 0.9;
+      color: var(--muted);
     }
     .grid {
       display: grid;
@@ -190,20 +236,22 @@
       }
     }
     .card {
-      background: radial-gradient(circle at top left, #020617, #020617);
+      background: linear-gradient(155deg, var(--panel), var(--panel-strong));
       border-radius: 18px;
       padding: 16px 16px 18px;
-      border: 1px solid rgba(31,41,55,0.9);
-      box-shadow: 0 18px 40px rgba(15,23,42,0.7);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
     .card h3 {
       margin-top: 0;
       font-size: 16px;
       margin-bottom: 6px;
+      color: #f6f8ff;
     }
     .card p {
       font-size: 14px;
       opacity: 0.9;
+      color: var(--muted);
     }
     .steps {
       display: grid;
@@ -217,15 +265,16 @@
       }
     }
     .step-number {
-      font-size: 13px;
+      font-size: 12px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       opacity: 0.7;
       margin-bottom: 4px;
+      color: var(--accent-2);
     }
     .step-title {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 600;
       margin-bottom: 4px;
     }
     .two-column {
@@ -252,10 +301,10 @@
     }
     input, select, textarea {
       width: 100%;
-      padding: 9px 11px;
-      border-radius: 11px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.95);
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
       color: #e5e7eb;
       font-size: 14px;
       box-sizing: border-box;
@@ -291,7 +340,7 @@
     }
     footer {
       padding-top: 24px;
-      border-top: 1px solid rgba(15,23,42,0.9);
+      border-top: 1px solid rgba(255,255,255,0.04);
       font-size: 12px;
       opacity: 0.75;
     }
@@ -318,11 +367,11 @@
       }
     }
     .video-card {
-      background: radial-gradient(circle at top left, #020617, #0b1220);
-      border: 1px solid rgba(31,41,55,0.9);
+      background: linear-gradient(160deg, var(--panel), var(--panel-strong));
+      border: 1px solid var(--border);
       border-radius: 14px;
       padding: 12px;
-      box-shadow: 0 16px 36px rgba(15,23,42,0.7);
+      box-shadow: var(--shadow);
     }
     .video-frame {
       position: relative;
@@ -332,6 +381,7 @@
       border-radius: 10px;
       border: 1px solid rgba(148,163,184,0.5);
       background: #0f172a;
+      box-shadow: inset 0 0 0 1px rgba(56, 227, 165, 0.08);
     }
     .video-frame iframe {
       position: absolute;
@@ -402,6 +452,13 @@
       margin-top: 8px;
     }
   </style>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WX9NNG2X');</script>
+  <!-- End Google Tag Manager -->
   <script>
     // Analytics placeholders: replace IDs to activate tracking
     (function() {
@@ -479,13 +536,13 @@
           </div>
           <div class="hero-actions">
             <a href="https://calendly.com/salvadorcastillo2020/30min?utm_source=site&utm_medium=cta&utm_campaign=hero" target="_blank" rel="noreferrer">
-              <button class="btn-primary" type="button" data-track="cta_book">Book D9 / Solar Strategy Call</button>
+              <button class="btn-primary" type="button" data-analytics="calendly" data-location="hero" data-label="Book D9 / Solar Strategy Call">Book D9 / Solar Strategy Call</button>
             </a>
             <a href="https://wa.me/19495915731?text=Hi%20Rico%2C%20I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
-              <button class="btn-secondary" type="button" data-track="cta_whatsapp">Instant WhatsApp Chat</button>
+              <button class="btn-secondary" type="button" data-analytics="whatsapp" data-location="hero" data-label="Instant WhatsApp Chat">Instant WhatsApp Chat</button>
             </a>
-            <a href="sms:YOUR_SMS_NUMBER?&body=I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
-              <button class="btn-secondary" type="button" data-track="cta_sms">Text Me for a Demo (SMS)</button>
+            <a href="sms:19495915731?&body=I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
+              <button class="btn-secondary" type="button">Text Me for a Demo (SMS)</button>
             </a>
           </div>
           <div class="hero-note">
@@ -592,10 +649,10 @@
         </div>
         <div class="video-cta">
           <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-            <button class="btn-primary" type="button">Book Zoom / Local Demo</button>
+            <button class="btn-primary" type="button" data-analytics="calendly" data-location="videos" data-label="Book Zoom / Local Demo">Book Zoom / Local Demo</button>
           </a>
           <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-            <button class="btn-secondary" type="button">Request Priority Purchase Call</button>
+            <button class="btn-secondary" type="button" data-analytics="calendly" data-location="videos" data-label="Request Priority Purchase Call">Request Priority Purchase Call</button>
           </a>
           <div class="video-cta-note">Local meetings only; out-of-state bookings are not available right now.</div>
         </div>
@@ -733,7 +790,7 @@
         </div>
         <p style="margin-top:16px;">
           <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-            <button class="btn-primary" type="button">Start with a Complimentary Discovery Call</button>
+            <button class="btn-primary" type="button" data-analytics="calendly" data-location="how" data-label="Start with a Complimentary Discovery Call">Start with a Complimentary Discovery Call</button>
           </a>
         </p>
       </section>
@@ -871,7 +928,7 @@
               <li>No pressure; clear next steps</li>
             </ul>
             <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-              <button class="btn-primary" type="button" style="width:100%;">Schedule Zoom / Local Demo</button>
+              <button class="btn-primary" type="button" style="width:100%;" data-analytics="calendly" data-location="book" data-label="Schedule Zoom / Local Demo">Schedule Zoom / Local Demo</button>
             </a>
             <div class="cta-note">Out-of-state meetings are not available.</div>
           </div>
@@ -885,19 +942,19 @@
               <li>Ideal for bulk/franchise/warehouse</li>
             </ul>
             <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-              <button class="btn-secondary" type="button" style="width:100%;">Request Priority Purchase Call</button>
+              <button class="btn-secondary" type="button" style="width:100%;" data-analytics="calendly" data-location="book" data-label="Request Priority Purchase Call">Request Priority Purchase Call</button>
             </a>
             <div class="cta-note">Limited priority slots; local deployments preferred.</div>
           </div>
         </div>
         <p style="margin-top:12px;">
           <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
-            <button class="btn-primary" type="button" style="width:100%;">Book on Calendly (30 min)</button>
+            <button class="btn-primary" type="button" style="width:100%;" data-analytics="calendly" data-location="book" data-label="Book on Calendly (30 min)">Book on Calendly (30 min)</button>
           </a>
         </p>
         <p style="margin-top:8px;">
           <a href="https://wa.me/19495915731" target="_blank" rel="noreferrer">
-            <button class="btn-secondary" type="button" style="width:100%;">Chat on WhatsApp Now</button>
+            <button class="btn-secondary" type="button" style="width:100%;" data-analytics="whatsapp" data-location="book" data-label="Chat on WhatsApp Now">Chat on WhatsApp Now</button>
           </a>
         </p>
       </section>
@@ -962,15 +1019,76 @@
   </div>
 
   <script>
-    function trackEvent(name) {
-      try { if (typeof gtag === 'function') { gtag('event', name); } } catch (e) {}
-      try { if (typeof fbq === 'function') { fbq('trackCustom', name); } } catch (e) {}
-      try { if (typeof ttq !== 'undefined') { ttq.track(name); } } catch (e) {}
+    /**
+     * Tracking helpers for GA4, Meta Pixel, and TikTok Pixel.
+     * Events (standardized):
+     * - page_view { path, referrer }
+     * - whatsapp_click { location, label }
+     * - calendly_initiated { location, label }
+     * - lead_form_start { form_name }
+     * - lead_form_submitted { form_name, success }
+     * - qr_visitor { campaign, source }
+     *
+     * Usage examples:
+     *   trackWhatsappClick('hero', 'Instant WhatsApp Chat');
+     *   trackCalendlyInitiated('book', 'Schedule Zoom');
+     *   trackLeadFormStart('snapshot_form');
+     *   trackLeadFormSubmitted('snapshot_form', true);
+     *   trackPageView(window.location.pathname + window.location.search, document.referrer);
+     */
+    function sendAll(eventName, params) {
+      var safeParams = params || {};
+      try { if (typeof gtag === 'function') { gtag('event', eventName, safeParams); } } catch (e) {}
+      try { if (typeof fbq === 'function') { fbq('trackCustom', eventName, safeParams); } } catch (e) {}
+      try { if (typeof ttq !== 'undefined' && typeof ttq.track === 'function') { ttq.track(eventName, safeParams); } } catch (e) {}
     }
+    function trackPageView(path, referrer) {
+      sendAll('page_view', {
+        path: path || (typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''),
+        referrer: referrer || (typeof document !== 'undefined' ? document.referrer : '')
+      });
+    }
+    function trackWhatsappClick(location, label) {
+      sendAll('whatsapp_click', { location: location || '', label: label || '' });
+    }
+    function trackCalendlyInitiated(location, label) {
+      sendAll('calendly_initiated', { location: location || '', label: label || '' });
+    }
+    function trackLeadFormStart(formName) {
+      sendAll('lead_form_start', { form_name: formName || '' });
+    }
+    function trackLeadFormSubmitted(formName, success) {
+      sendAll('lead_form_submitted', { form_name: formName || '', success: !!success });
+    }
+    function trackQrVisitor(campaign, source) {
+      sendAll('qr_visitor', { campaign: campaign || '', source: source || '' });
+    }
+
     document.addEventListener('DOMContentLoaded', function () {
-      document.querySelectorAll('[data-track]').forEach(function (el) {
+      // Fire standardized page_view
+      trackPageView();
+
+      // Detect QR/UTM traffic
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var utmSource = params.get('utm_source');
+        var utmCampaign = params.get('utm_campaign');
+        if (utmSource && utmCampaign) {
+          trackQrVisitor(utmCampaign, utmSource);
+        }
+      } catch (e) {}
+
+      // Wire WhatsApp buttons
+      document.querySelectorAll('[data-analytics=\"whatsapp\"]').forEach(function (el) {
         el.addEventListener('click', function () {
-          trackEvent(el.getAttribute('data-track'));
+          trackWhatsappClick(el.getAttribute('data-location'), el.getAttribute('data-label'));
+        });
+      });
+
+      // Wire Calendly buttons
+      document.querySelectorAll('[data-analytics=\"calendly\"]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          trackCalendlyInitiated(el.getAttribute('data-location'), el.getAttribute('data-label'));
         });
       });
     });
@@ -991,6 +1109,15 @@
     const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
     // Optional: your serverless webhook that calls WhatsApp Cloud API
     const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
+    // Lead form start event on first interaction
+    let formStarted = false;
+    form.addEventListener('focusin', function () {
+      if (!formStarted) {
+        formStarted = true;
+        trackLeadFormStart('snapshot_form');
+      }
+    });
+
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
       statusBox.style.display = 'none';
@@ -1052,6 +1179,8 @@
         successMessage.style.display = 'block';
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
+        // Track successful lead capture
+        trackLeadFormSubmitted('snapshot_form', true);
 
         // WhatsApp click-to-chat (opens a chat with prefilled info)
         if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
