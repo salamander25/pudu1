@@ -2,344 +2,1002 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Auto Lots Solar by Sol Solar - Canopies, Storage, EV-Ready, Referral Profits</title>
+  <title>Dash Robotics Concierge – Luxury Service Robots</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Solar canopies and storage for auto dealerships, car lots, RV/boat yards, and EV-ready sites plus a high-yield referral program on residential solar.">
-  <meta property="og:title" content="Auto Lots Solar - Shade, Storage, EV-Ready, Referral Profits">
-  <meta property="og:description" content="Dealers and lots: cut bills, add canopies, storage, EV readiness, and earn $2.5k+ per residential solar referral. Book a 15-minute assessment.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta name="description"
+        content="Luxury Pudu Robotics solutions for restaurants, hotels, clinics, offices, and events. Frictionless deployment by Dash Robotics.">
   <style>
-    :root {
-      --bg: #05070d;
-      --panel: #0b1323;
-      --panel-2: #0f1b30;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --accent: #f59e0b;
-      --accent-2: #38bdf8;
-      --border: rgba(148,163,184,0.35);
-    }
-    * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(245,158,11,0.08), transparent 32%),
-        radial-gradient(circle at 82% 8%, rgba(56,189,248,0.12), transparent 36%),
-        var(--bg);
-      color: var(--text);
-      line-height: 1.65;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #05070b;
+      color: #f5f5f5;
+      line-height: 1.6;
     }
     a { color: #7dd3fc; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    .page { max-width: 1200px; margin: 0 auto; padding: 20px 16px 80px; }
-    header {
-      position: sticky; top: 0; z-index: 10;
-      background: linear-gradient(180deg, rgba(5,7,13,0.96), rgba(5,7,13,0.82));
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(148,163,184,0.08);
-      padding: 14px 0;
-      margin-bottom: 28px;
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
     }
-    .nav { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .brand { font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 13px; }
-    .nav-links { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; opacity: 0.9; }
-    h1 { font-size: clamp(32px, 4vw, 44px); line-height: 1.1; margin: 0 0 12px; }
-    h2 { font-size: 24px; margin: 0 0 12px; }
-    p { margin: 0 0 14px; color: var(--muted); }
-    .hero { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 28px; align-items: center; padding: 8px 0 36px; }
-    @media (max-width: 900px) { .hero { grid-template-columns: 1fr; } .nav { flex-direction: column; align-items: flex-start; } }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
-    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: rgba(15,23,42,0.6); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0 6px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 18px; border-radius: 999px; font-weight: 700; font-size: 14px; border: 1px solid transparent; cursor: pointer; text-decoration: none; transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease; }
-    .btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #0b1220; box-shadow: 0 12px 34px rgba(56,189,248,0.25); }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 40px rgba(56,189,248,0.32); }
-    .btn-secondary { background: rgba(15,23,42,0.85); border-color: var(--border); color: #e2e8f0; }
-    .btn-secondary:hover { border-color: #94a3b8; transform: translateY(-1px); }
-    .hero-visual { border-radius: 20px; padding: 18px; border: 1px solid rgba(148,163,184,0.5); background: radial-gradient(circle at 10% 12%, rgba(245,158,11,0.1), rgba(245,158,11,0.02)), radial-gradient(circle at 80% 10%, rgba(56,189,248,0.12), rgba(56,189,248,0.02)), var(--panel); box-shadow: 0 24px 70px rgba(15,23,42,0.85); }
-    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-    section { padding: 26px 0; border-top: 1px solid rgba(148,163,184,0.08); }
-    .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); margin-top: 14px; }
-    .card { background: var(--panel); border: 1px solid rgba(31,41,55,0.9); border-radius: 16px; padding: 16px; box-shadow: 0 16px 40px rgba(15,23,42,0.65); transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease; }
-    .card:hover { transform: translateY(-3px); border-color: #38bdf8; box-shadow: 0 22px 46px rgba(56,189,248,0.18); }
-    .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 18px; margin-top: 12px; }
-    @media (max-width: 920px) { .two-col { grid-template-columns: 1fr; } }
-    form { display: grid; gap: 12px; margin-top: 8px; }
-    label { font-size: 13px; color: #e2e8f0; display: block; margin-bottom: 4px; }
-    input, select, textarea { width: 100%; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border); background: rgba(15,23,42,0.9); color: #e5e7eb; font-size: 14px; }
-    textarea { min-height: 90px; resize: vertical; }
-    .checkbox-row { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #cbd5e1; }
-    .checkbox-row input { width: 16px; height: 16px; margin-top: 2px; }
-    .form-status { font-size: 13px; display: none; }
-    .form-status.ok { color: #bbf7d0; }
-    .form-status.err { color: #fca5a5; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 14px; margin-top: 10px; }
-    .step-number { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
-    .kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 10px; margin-top: 10px; }
-    .kpi .card { text-align: left; }
-    .kpi strong { font-size: 20px; color: #f8fafc; }
-    .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 12px; margin-top: 10px; }
-    .ribbon { margin: 0 -16px 14px; padding: 10px 16px; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.35); color: #fbbf24; font-weight: 700; font-size: 13px; }
-    .note { font-size: 13px; color: #cbd5e1; opacity: 0.92; }
-    footer { padding-top: 24px; border-top: 1px solid rgba(148,163,184,0.08); font-size: 12px; color: #cbd5e1; }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 14px; margin-top: 12px; }
-    .media-card { background: var(--panel); border: 1px solid rgba(31,41,55,0.9); border-radius: 14px; overflow: hidden; box-shadow: 0 16px 36px rgba(15,23,42,0.6); }
-    .media-img { width: 100%; display: block; height: 180px; object-fit: cover; }
-    .media-caption { padding: 10px 12px; font-size: 13px; color: var(--muted); }
-    .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 14px; margin-top: 12px; }
-    .video-frame { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(148,163,184,0.4); background: #0f1b30; box-shadow: 0 16px 36px rgba(15,23,42,0.6); }
-    .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .brand {
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .nav-links a {
+      margin-left: 20px;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+      gap: 32px;
+      padding: 32px 0 48px;
+      align-items: center;
+    }
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
+    .hero-title {
+      font-size: clamp(32px, 4vw, 44px);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-subtitle {
+      font-size: 17px;
+      max-width: 540px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+    .badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .btn-primary, .btn-secondary {
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #0ea5e9);
+      color: #020617;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.7);
+    }
+    .hero-note {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+    .hero-visual {
+      border-radius: 24px;
+      border: 1px solid rgba(148,163,184,0.6);
+      padding: 18px;
+      background: radial-gradient(circle at top left, #0f172a, #020617 55%);
+      box-shadow: 0 25px 60px rgba(15,23,42,0.85);
+    }
+    .hero-visual h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .hero-visual p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(148,163,184,0.6);
+      font-size: 12px;
+      opacity: 0.9;
+    }
+    .form-status {
+      font-size: 13px;
+      margin-top: 6px;
+      display: none;
+    }
+    .form-status.ok {
+      color: #bbf7d0;
+    }
+    .form-status.err {
+      color: #fca5a5;
+    }
+        section {
+      padding: 32px 0;
+      border-top: 1px solid rgba(15,23,42,0.9);
+    }
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    section p {
+      font-size: 15px;
+      opacity: 0.9;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .card {
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border-radius: 18px;
+      padding: 16px 16px 18px;
+      border: 1px solid rgba(31,41,55,0.9);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.7);
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+    .card p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 800px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+    .step-number {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+    .step-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,0.9fr);
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (max-width: 900px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+    }
+    form {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+    label {
+      font-size: 13px;
+      opacity: 0.9;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 11px;
+      border-radius: 11px;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      opacity: 0.85;
+    }
+    .checkbox-row input {
+      width: 16px;
+      height: 16px;
+      margin-top: 1px;
+    }
+    .faq {
+      margin-top: 16px;
+      display: grid;
+      gap: 14px;
+    }
+    .faq-item h3 {
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .muted {
+      font-size: 13px;
+      opacity: 0.75;
+    }
+    footer {
+      padding-top: 24px;
+      border-top: 1px solid rgba(15,23,42,0.9);
+      font-size: 12px;
+      opacity: 0.75;
+    }
+    .success-message {
+      display: none;
+      margin-top: 10px;
+      font-size: 13px;
+      color: #bbf7d0;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    @media (max-width: 980px) {
+      .media-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+    @media (max-width: 640px) {
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .video-card {
+      background: radial-gradient(circle at top left, #020617, #0b1220);
+      border: 1px solid rgba(31,41,55,0.9);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: 0 16px 36px rgba(15,23,42,0.7);
+    }
+    .video-frame {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: #0f172a;
+    }
+    .video-frame iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .video-caption {
+      margin-top: 8px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .video-cta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+    .video-cta-note {
+      font-size: 13px;
+      opacity: 0.82;
+    }
+    .cta-choices {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    @media (max-width: 860px) {
+      .cta-choices {
+        grid-template-columns: 1fr;
+      }
+    }
+    .cta-card {
+      border: 1px solid rgba(31,41,55,0.9);
+      border-radius: 16px;
+      padding: 18px;
+      background: radial-gradient(circle at top left, #0b1220, #020617);
+      box-shadow: 0 18px 40px rgba(15,23,42,0.65);
+    }
+    .cta-card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+    }
+    .cta-badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 10px;
+      background: rgba(34,197,94,0.12);
+      color: #86efac;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .cta-card ul {
+      padding-left: 18px;
+      margin: 8px 0 12px;
+      opacity: 0.9;
+      font-size: 14px;
+    }
+    .cta-note {
+      font-size: 12px;
+      opacity: 0.8;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="page">
     <header>
-      <div class="nav" aria-label="Primary">
-        <div class="brand">Sol Solar - Auto Lots, Canopies, Storage</div>
-        <nav class="nav-links">
-          <a href="#why">Value</a>
-          <a href="#who">Fits</a>
-          <a href="#calc">Savings</a>
-          <a href="#process">Process</a>
-          <a href="#proof">Proof</a>
-          <a href="#media">Media</a>
-          <a href="#referral">Referral</a>
-          <a href="#cta">Book</a>
-        </nav>
-      </div>
+      <div class="brand">Sol Solar Robotics (Referral Partner)</div>
+      <nav class="nav-links">
+        <a href="#why">Why Robots</a>
+        <a href="#who">Who It's For</a>
+        <a href="#how">How It Works</a>
+        <a href="#snapshot">Get Snapshot</a>
+        <a href="#videos">Videos</a>
+        <a href="#book">Book Call</a>
+      </nav>
     </header>
 
-    <div class="ribbon">Auto dealers, car lots, RV/boat yards: solar canopies + storage + EV readiness. Residential referral revenue included.</div>
-
     <main>
+      <!-- HERO -->
       <section class="hero">
         <div>
-          <h1>Shade Your Lot, Cut Bills, Add Storage and EV Readiness</h1>
-          <p class="hero-sub">Solar canopies and batteries built for auto dealers, car lots, and RV/boat yards. Keep cars cool, lower bills, tame demand charges, and future-proof with EV.</p>
-          <div class="badge-row">
-            <span class="pill">Auto Dealers</span>
-            <span class="pill">Independent Lots</span>
-            <span class="pill">RV / Boat Yards</span>
-            <span class="pill">EV-Ready Sites</span>
-            <span class="pill">Storage for Peaks</span>
+          <h1 class="hero-title">Service Robots That Boost Revenue and Cut Stress</h1>
+          <p class="hero-subtitle">
+            Book a quick call to see how Pudu robots handle service, cleaning, and delivery for restaurants, hotels,
+            clinics, events, and warehouses.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">Pudu Robotics Partner</span>
+            <span class="badge">Referral Partner to Dash Robotics</span>
+            <span class="badge">Priority Slots Available</span>
           </div>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#cta">Book a 15-Min Lot Assessment</a>
-            <a class="btn btn-secondary" href="#calc">Estimate My Savings</a>
+          <div class="hero-actions">
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+              <button class="btn-primary" type="button">Schedule a Robotics Discovery Call</button>
+            </a>
+            <a href="#videos">
+              <button class="btn-secondary" type="button">Watch / Learn First</button>
+            </a>
           </div>
-          <div class="note">We scope canopies, batteries, EV make-ready, and incentives so ownership and finance have a decision-ready plan.</div>
+          <div class="hero-note">
+            20–30 minute Zoom. No obligation. Local only; out-of-state not available right now. Sol Solar operates as a
+            referral partner to Dash Robotics.
+          </div>
         </div>
         <div class="hero-visual">
-          <h3>What We Deliver</h3>
+          <h3>Imagine This in Your Space</h3>
+          <p>
+            A graceful service robot glides through your dining room or lobby, guests smiling, phones filming.
+            Staff focus on people, not running back and forth. At the end of the month, the numbers make sense.
+          </p>
           <div class="pill-row">
-            <span class="pill">Shade Canopies</span>
-            <span class="pill">Battery for Peaks</span>
-            <span class="pill">EV / Charger Ready</span>
-            <span class="pill">Lot Lighting Offset</span>
-            <span class="pill">Referral Revenue</span>
+            <span class="pill">Food Running</span>
+            <span class="pill">Lobby Greeting</span>
+            <span class="pill">Bottle Service</span>
+            <span class="pill">Amenity Delivery</span>
+            <span class="pill">Back-of-House Support</span>
           </div>
-          <p style="margin-top:12px;">You get a clear model: capex vs. PPA/lease, incentives, canopy design, battery sizing, EV conduit, timeline, and expected IRR.</p>
         </div>
       </section>
 
+      <!-- VIDEOS -->
+      <section id="videos">
+        <h2>Signature Robot Experiences (Video)</h2>
+        <p>
+          Show your team exactly how Pudu robots look, move, and win attention. Swap in your best YouTube or Sora links
+          below.
+        </p>
+        <div class="media-grid">
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/gH7DLaQlsuc?si=63LBMBUBqj0YgkUz"
+                      title="D9 Robot Dog Launch"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Featured: D9 robot dog launch - trending and perfect for lobby greeting / guest wow.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/pSnU7ChHDFo?si=Bi631DoazraiJxRu"
+                      title="MT1 Vacuum Robot Demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">MT1 vacuum/cleaning robot in action �?" show clients fast ROI on floor care.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/hqyV0yMyEpg?si=Nau6G0UYV-aHkP8i"
+                      title="Showcase Experience"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">High-visibility showcase clip �?" grab attention and inspire photo/video sharing.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/8MUqvy-QYbk?si=Z6zcvFYguii55iPd"
+                      title="Lifter Bot Warehouse Demo"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Lifter bot for warehouses �?" high-value pallets/lifts; book for priority deployment pricing.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/MEN5tiNOJqw?si=Kva9c0JUpHMNKp9r"
+                      title="Vacuum Robot Demo 2"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Vacuum robot pass 2 �?" consistent shine and labor-free floor care.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/t-3Toj8NNa8?si=aS0bMLTEA5BmioAs"
+                      title="Wyndham Deployment"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Wyndham deployment �?" real hotel use-case for amenity delivery and guest wow.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/uiZnAyG_2XI?si=CeNDt93fmo_j-1TV"
+                      title="Cleaning Pass Showcase"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Cleaning pass showcase �?" steady coverage for lobbies and corridors.</div>
+          </div>
+          <div class="video-card">
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/LAr6wVUarZk?si=GuS73KJVvipZ5LZr"
+                      title="Servicio en Español"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+            </div>
+            <div class="video-caption">Servicio en español �?" demuestra flexibilidad para equipos bilingües y mercados hispanohablantes.</div>
+          </div>
+        </div>
+        <div class="video-cta">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+            <button class="btn-primary" type="button">Book Zoom / Local Demo</button>
+          </a>
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+            <button class="btn-secondary" type="button">Request Priority Purchase Call</button>
+          </a>
+          <div class="video-cta-note">Local meetings only; out-of-state bookings are not available right now.</div>
+        </div>
+      </section>
+
+      <!-- WHY -->
       <section id="why">
-        <h2>Why Solar Canopies + Storage for Dealers</h2>
-        <div class="kpi">
-          <div class="card"><strong>15-25%</strong><br><span class="note">Typical first-year bill reduction with canopies</span></div>
-          <div class="card"><strong>30-50%</strong><br><span class="note">Demand charge cuts with storage and peak shaving</span></div>
-          <div class="card"><strong>3-6 yr</strong><br><span class="note">Simple payback with ITC, depreciation, and local rebates</span></div>
-          <div class="card"><strong>Referral $</strong><br><span class="note">Earn on residential solar leads from your buyers</span></div>
-        </div>
-        <p style="margin-top:10px;">We map your tariff, lighting/HVAC load, canopy square footage, and storage/EV needs to present a decision-ready package for ownership and finance.</p>
-      </section>
-
-      <section id="who">
-        <h2>Who This Is For</h2>
+        <h2>Designed for Humans. Powered by Robots.</h2>
+        <p>
+          Guests remember how you make them feel. A well-placed service robot doesn’t replace your staff – it frees them.
+          Servers spend more time building relationships, managers see fewer staffing gaps, and owners gain a predictable,
+          trackable return on a one-time investment.
+        </p>
         <div class="grid">
-          <div class="card"><h3>Auto Dealers & Groups</h3><p>Shade inventory, lower HVAC/lighting costs, prep for EV chargers.</p></div>
-          <div class="card"><h3>Independent Used Lots</h3><p>Low-friction canopies and batteries to stabilize bills and add shade value.</p></div>
-          <div class="card"><h3>RV / Boat Yards</h3><p>Large-span canopies with storage to protect inventory and cut peaks.</p></div>
-          <div class="card"><h3>Fleet & EV Ready Sites</h3><p>Solar + storage with conduit for future Level 2/fast chargers.</p></div>
-          <div class="card"><h3>Multi-Lot Owners</h3><p>Standardize contracts across lots with long-term favorable terms.</p></div>
-          <div class="card"><h3>Referral Partners</h3><p>Earn on residential solar leads from your buyers and service customers.</p></div>
+          <div class="card">
+            <h3>Frictionless Service</h3>
+            <p>
+              Robots quietly run food, deliver items, and assist staff without attitude, delays, or sick days.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Luxury Experience</h3>
+            <p>
+              Guests pull out their phones, record, share, and talk about your brand. You become “the place with the robot.”
+            </p>
+          </div>
+          <div class="card">
+            <h3>Smart Economics</h3>
+            <p>
+              Lower staff pressure, fewer missed tables, more upsells, and a system that pays for itself over time.
+            </p>
+          </div>
         </div>
       </section>
 
-      <section id="calc">
-        <h2>See Your Savings in Minutes</h2>
-        <div class="two-col">
+      <!-- WHO -->
+      <section id="who">
+        <h2>Built for Busy, High-Impact Spaces</h2>
+        <p>We tailor robotics solutions to the spaces where service and experience matter most.</p>
+        <div class="grid">
+          <div class="card">
+            <h3>Restaurants & Cafés</h3>
+            <p>
+              Food running, bussing, drink delivery, and birthday parades that get filmed and shared.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Hotels & Resorts</h3>
+            <p>
+              Lobby greeters, amenity delivery, and nighttime assistance that elevate every stay.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Hospitals & Clinics</h3>
+            <p>
+              Medication runs, document transport, and comfort missions for patients and staff.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Offices & Coworking</h3>
+            <p>
+              Snack and coffee runs, visitor greeting, and showpiece tours for investors and partners.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Event Venues & Nightlife</h3>
+            <p>
+              Bottle service, dessert presentations, and roaming robots that turn every event into content.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Other Spaces</h3>
+            <p>
+              Have a unique setting? We’ll explore whether robots make sense – and tell you honestly if they don’t.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT -->
+      <section>
+        <h2>A Family of Robots for Every Role</h2>
+        <p>
+          We work primarily with Pudu Robotics, one of the world leaders in commercial service robots. Different robots
+          specialize in different jobs: food-running, greeting, and utility delivery. On your call, we’ll match your
+          business to the right robots so they fit your layout, staff, and goals.
+        </p>
+        <div class="grid">
+          <div class="card">
+            <h3>Food-Running Robots</h3>
+            <p>
+              Gracefully carry dishes to tables and return for the next run, so servers focus on guests, not steps.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Host & Greeting Robots</h3>
+            <p>
+              Welcome guests, display menus or specials, escort parties, and run simple campaigns and promotions.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Delivery & Utility Robots</h3>
+            <p>
+              Move items, supplies, or documents securely from A to B, saving time and reducing back-and-forth.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section id="how">
+        <h2>Frictionless From First Call to First Robot</h2>
+        <div class="steps">
+          <div class="card">
+            <div class="step-number">Step 1</div>
+            <div class="step-title">Discovery Call</div>
+            <p>
+              20–30 minutes on Zoom. We learn about your space, service flow, and what a “win” would look like for you.
+            </p>
+          </div>
+          <div class="card">
+            <div class="step-number">Step 2</div>
+            <div class="step-title">Custom Robotics Plan</div>
+            <p>
+              You receive a tailored layout: where robots operate, what roles they play, and rough ROI expectations.
+            </p>
+          </div>
+          <div class="card">
+            <div class="step-number">Step 3</div>
+            <div class="step-title">Deployment & Training</div>
+            <p>
+              Our partners help with on-site deployment, training, and fine-tuning so robots blend into your team.
+            </p>
+          </div>
+        </div>
+        <p style="margin-top:16px;">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+            <button class="btn-primary" type="button">Start with a Complimentary Discovery Call</button>
+          </a>
+        </p>
+      </section>
+
+      <!-- SNAPSHOT / FORM -->
+      <section id="snapshot">
+        <h2>Get Your Free Robotics Readiness Snapshot</h2>
+        <div class="two-column">
           <div>
-            <p>Upload a recent utility bill (PDF or photo) and tell us your address and load profile. We return a concise model with: system size, canopy layout, storage strategy, incentives, demand-charge approach, and simple payback.</p>
-            <p class="note">No obligation. We use your actual tariff, lot size/canopy plan, hours, storage needs, and EV ambitions.</p>
+            <p>
+              Get a tailored snapshot of how robots could fit your space plus a fast path to book. Priority alerts go to
+              WhatsApp for franchise, warehouse, and bulk buyers.
+            </p>
+            <p class="muted">We keep it simple: no spam, no pressure, just clear next steps.</p>
           </div>
           <div>
-            <form id="lead-form">
-              <div><label for="name">Full Name *</label><input id="name" name="name" required></div>
-              <div><label for="company">Company *</label><input id="company" name="company" required></div>
-              <div><label for="email">Work Email *</label><input id="email" type="email" name="email" required></div>
-              <div><label for="phone">Mobile / Direct Line *</label><input id="phone" name="phone" required pattern="[- +()0-9]{7,}"></div>
-              <div><label for="location">Lot Address or City/State *</label><input id="location" name="location" required></div>
-              <div><label for="load">Monthly kWh or Avg Bill ($)</label><input id="load" name="load" placeholder="e.g., 40,000 kWh or $9,500"></div>
-              <div><label for="tariff">Utility & Tariff</label><input id="tariff" name="tariff" placeholder="e.g., SCE TOU-8-B or Oncor GS-2"></div>
-              <div><label for="priority">Top priority</label><select id="priority" name="priority">
-                <option>Lower OPEX</option><option>Demand charge relief</option><option>Shade canopies</option><option>EV/charger readiness</option><option>Resilience / outage protection</option></select></div>
-              <div><label for="notes">Notes (stall count, canopy interest, storage kWh, EV plans)</label><textarea id="notes" name="notes"></textarea></div>
-              <div class="checkbox-row"><input id="upload" type="checkbox" name="upload"><label for="upload">I will email or share a recent utility bill for modeling.</label></div>
-              <div class="checkbox-row"><input id="referral" type="checkbox" name="referral"><label for="referral">Interested in residential solar referral revenue for buyers/clients.</label></div>
-              <button type="submit" class="btn btn-primary" style="width:100%;">Get My Savings Model</button>
-              <div id="success-message" class="form-status ok">Thanks! We have your details and will send your model.</div>
+            <form id="snapshot-form">
+              <div>
+                <label for="name">Full Name *</label>
+                <input id="name" name="name" required>
+              </div>
+              <div>
+                <label for="company">Company / Venue Name *</label>
+                <input id="company" name="company" required>
+              </div>
+              <div>
+                <label for="role">Your Role *</label>
+                <select id="role" name="role" required>
+                  <option value="">Select...</option>
+                  <option>Owner / Partner</option>
+                  <option>General Manager</option>
+                  <option>Director</option>
+                  <option>Operations / Facilities</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" type="email" name="email" required>
+              </div>
+              <div>
+                <label for="phone">Mobile / WhatsApp (optional)</label>
+                <input id="phone" name="phone">
+              </div>
+              <div>
+                <label for="location">City &amp; State *</label>
+                <input id="location" name="location" required>
+              </div>
+              <div>
+                <label for="type">Business Type *</label>
+                <select id="type" name="type" required>
+                  <option value="">Select...</option>
+                  <option>Restaurant / Cafe</option>
+                  <option>Hotel / Resort</option>
+                  <option>Hospital / Clinic</option>
+                  <option>Office / Coworking</option>
+                  <option>Event Venue / Nightlife</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
+                <label for="scale">Volume / Scale *</label>
+                <select id="scale" name="scale" required>
+                  <option value="">Select...</option>
+                  <option>Single location pilot</option>
+                  <option>Multi-location (2-5)</option>
+                  <option>Franchise group / chain (6+)</option>
+                  <option>Warehouse / logistics hub</option>
+                </select>
+              </div>
+              <div>
+                <label for="timeline">Desired timeline *</label>
+                <select id="timeline" name="timeline" required>
+                  <option value="">Select...</option>
+                  <option>ASAP / priority</option>
+                  <option>This month</option>
+                  <option>Next 2-3 months</option>
+                  <option>Exploring / planning</option>
+                </select>
+              </div>
+              <div>
+                <label for="decision">Your role in decision *</label>
+                <select id="decision" name="decision" required>
+                  <option value="">Select...</option>
+                  <option>Final decision maker</option>
+                  <option>Recommender / evaluator</option>
+                  <option>Operations lead</option>
+                  <option>Finance / procurement</option>
+                </select>
+              </div>
+              <div>
+                <label for="idea">Where do you imagine using robots?</label>
+                <textarea id="idea" name="idea"
+                          placeholder="Food running, bottle service, lobby greeting, amenity delivery, etc."></textarea>
+              </div>
+              <div class="checkbox-row">
+                <input id="priority" type="checkbox" name="priority">
+                <label for="priority">
+                  I want priority treatment for bulk/franchise/warehouse deployment.
+                </label>
+              </div>
+              <div class="checkbox-row">
+                <input id="optin" type="checkbox" name="optin">
+                <label for="optin">
+                  I agree to receive emails from Dash Robotics about robotics solutions, case studies, and special
+                  opportunities. I can unsubscribe at any time.
+                </label>
+              </div>
+              <div>
+                <button type="submit" class="btn-primary" style="width:100%;">Send My Robotics Snapshot</button>
+              </div>
+              <div id="success-message" class="success-message">
+                Thank you! Your details have been captured. We'll review and follow up shortly.
+              </div>
               <div id="form-status" class="form-status"></div>
             </form>
           </div>
         </div>
       </section>
 
-      <section id="process">
-        <h2>Our Process for Auto Lots</h2>
-        <div class="steps">
-          <div class="card"><div class="step-number">Step 1</div><h3>15-Min Assessment</h3><p>Review tariff, bill, stall count, and canopy layout. Flag storage/EV needs.</p></div>
-          <div class="card"><div class="step-number">Step 2</div><h3>Financial Model</h3><p>System size, canopy spans, storage strategy, incentives, IRR, payback, and PPA/lease/cash options.</p></div>
-          <div class="card"><div class="step-number">Step 3</div><h3>Design & Permitting</h3><p>Stamped engineering, interconnection, structural review, and AHJ approvals with milestones.</p></div>
-          <div class="card"><div class="step-number">Step 4</div><h3>Build & Commission</h3><p>Construction in phases to keep the lot selling. QA, PTO, and monitoring included.</p></div>
-        </div>
-      </section>
-
-      <section id="proof">
-        <h2>Proof and Credibility</h2>
-        <div class="grid">
-          <div class="card"><h3>Auto Group | 720 kW Canopy</h3><p>Shaded 180 stalls, HVAC/lighting offset 19%, battery shaved peaks by 32%.</p></div>
-          <div class="card"><h3>Independent Lot | 280 kW</h3><p>Cash-positive PPA, added EV conduit, structured weekend-only construction.</p></div>
-          <div class="card"><h3>RV / Boat Yard | 450 kW + Storage</h3><p>Protected high-value inventory, demand charges down 41%, 5.2-year payback with ITC/depr.</p></div>
-          <div class="card"><h3>Referral Program</h3><p>Dealers earn per residential solar lead closed; adds recurring revenue without new headcount.</p></div>
-        </div>
-        <p class="note" style="margin-top:10px;">Want more detail? We can share anonymized pro formas, canopy layouts, and production data under NDA.</p>
-      </section>
-
-      <section id="media">
-        <h2>See Canopies, Storage, and EV-Ready Lots</h2>
-        <div class="media-grid">
-          <div class="media-card">
-            <img class="media-img" src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=1400&q=80" alt="Solar canopy over parking lot">
-            <div class="media-caption">Solar canopies shading inventory while offsetting lighting and HVAC.</div>
-          </div>
-          <div class="media-card">
-            <img class="media-img" src="https://images.unsplash.com/photo-1610465299990-30e1e4d3260a?auto=format&fit=crop&w=1400&q=80" alt="EV-ready parking with conduit">
-            <div class="media-caption">EV make-ready: conduit and capacity sized for future chargers.</div>
-          </div>
-          <div class="media-card">
-            <img class="media-img" src="https://images.unsplash.com/photo-1582719478171-2f2df46f3c90?auto=format&fit=crop&w=1400&q=80" alt="Battery storage for demand charge management">
-            <div class="media-caption">Battery storage to shave peaks and keep critical loads online.</div>
-          </div>
-        </div>
-        <div class="video-grid">
-          <div class="video-frame">
-            <iframe loading="lazy" src="https://www.youtube.com/embed/2JYRnT0qqko" title="Solar canopy walkthrough" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-          <div class="video-frame">
-            <iframe loading="lazy" src="https://www.youtube.com/embed/7xZ9hqhsyPY" title="Battery and demand charge management demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-          <div class="video-frame">
-            <iframe loading="lazy" src="https://www.youtube.com/embed/dg9dE1jL0O8" title="EV-ready lot and charger prep" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-        </div>
-      </section>
-
-      <section id="referral">
-        <h2>Supreme Referral Vehicle (Residual Revenue)</h2>
-        <div class="two-col">
-          <div>
-            <p>Turn every buyer and service customer into long-term revenue. We handle residential solar sales, design, and install. You earn per closed project with tiers for volume.</p>
-            <p class="note">Designed for small and mid-size lots: simple process, no extra headcount, co-branded link.</p>
-          </div>
-          <div class="card">
-            <h3>Deal Structure</h3>
-            <ul style="margin:8px 0 0 18px; color: var(--muted);">
-              <li>$2,500 per residential system > 10 kW</li>
-              <li>Volume bonus: 7+ closed deals/month unlocks higher tiers (ask for current schedule)</li>
-              <li>We manage the homeowner journey end-to-end</li>
+      <!-- CALENDLY -->
+      <section id="book">
+        <h2>Book Your Robotics Discovery Call</h2>
+        <p>
+          20?30 minutes. Local only. Pick a Zoom consult or request priority purchase with Jason.
+        </p>
+        <div class="cta-choices">
+          <div class="cta-card">
+            <div class="cta-badge">Recommended</div>
+            <h3>Zoom or Local Live Demo</h3>
+            <p style="opacity:0.9;">Map routes, staffing impact, and guest flow fast.</p>
+            <ul>
+              <li>See service + cleaning + delivery options</li>
+              <li>Local deployments only</li>
+              <li>No pressure; clear next steps</li>
             </ul>
-            <div class="cta-row" style="margin-top:12px;">
-              <a class="btn btn-secondary" href="#cta">Request Referral Terms</a>
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+              <button class="btn-primary" type="button" style="width:100%;">Schedule Zoom / Local Demo</button>
+            </a>
+            <div class="cta-note">Out-of-state meetings are not available.</div>
+          </div>
+          <div class="cta-card">
+            <div class="cta-badge" style="background:rgba(14,165,233,0.16); color:#bae6fd;">Priority Purchase</div>
+            <h3>Purchase with Jason Shi (Priority Queue)</h3>
+            <p style="opacity:0.9;">Ready to move now? Lock priority scheduling and paperwork review.</p>
+            <ul>
+              <li>Fast-track consultation + docs</li>
+              <li>Queue jump for deployment</li>
+              <li>Ideal for bulk/franchise/warehouse</li>
+            </ul>
+            <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+              <button class="btn-secondary" type="button" style="width:100%;">Request Priority Purchase Call</button>
+            </a>
+            <div class="cta-note">Limited priority slots; local deployments preferred.</div>
+          </div>
+        </div>
+        <p style="margin-top:12px;">
+          <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
+            <button class="btn-primary" type="button" style="width:100%;">Book on Calendly (30 min)</button>
+          </a>
+        </p>
+        <p style="margin-top:8px;">
+          <a href="https://wa.me/19495915731" target="_blank" rel="noreferrer">
+            <button class="btn-secondary" type="button" style="width:100%;">Chat on WhatsApp Now</button>
+          </a>
+        </p>
+      </section>
+
+      <!-- TEAM + FAQ -->
+      <section>
+        <div class="two-column">
+          <div>
+            <h2>Meet Your Robotics Concierge Team</h2>
+            <p>
+              <strong>Jason Shi - Dash Robotics</strong><br>
+              Jason leads deployments and training. Sol Solar partners with Dash Robotics to connect you to the right
+              robots and ensure a smooth rollout.
+            </p>
+            <p>
+              <strong>Salvador “Rico” Castillo - Sol Solar Robotics</strong><br>
+              Referral partner and concierge. Rico bridges your goals with Dash Robotics deployment to keep the process
+              human, respectful, and fast.
+            </p>
+          </div>
+          <div>
+            <h2>Questions You Might Be Asking</h2>
+            <div class="faq">
+              <div class="faq-item">
+                <h3>Are robots going to replace my staff?</h3>
+                <p>
+                  No. The best deployments use robots to support staff, not replace them. Think of them as tireless
+                  runners that free your best people to do what humans do best.
+                </p>
+              </div>
+              <div class="faq-item">
+                <h3>How much do these robots cost?</h3>
+                <p>
+                  Pricing depends on the model, number of robots, and your deployment. On your discovery call we’ll give
+                  you ballpark numbers, typical ROI timelines, and options that respect your budget.
+                </p>
+              </div>
+              <div class="faq-item">
+                <h3>What if my space is small or oddly shaped?</h3>
+                <p>
+                  That’s exactly what the discovery call is for. Some spaces aren’t a fit; others just need a smart
+                  route layout. We’ll be transparent either way.
+                </p>
+              </div>
+              <div class="faq-item">
+                <h3>How long to go from “interested” to “live robots”?</h3>
+                <p>
+                  Typical timelines range from a few weeks to a couple of months, depending on layout, shipping, and
+                  training.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="faq">
-        <h2>Common Questions</h2>
-        <div class="faq-grid">
-          <div class="card"><h3>Do you offer PPA/lease or cash?</h3><p>Yes. We model cash, lease, and PPA with your cost of capital and tax position.</p></div>
-          <div class="card"><h3>Can you phase construction?</h3><p>Yes. We phase around sales peaks (weekends/late evenings) to keep the lot open.</p></div>
-          <div class="card"><h3>What about structure and drainage?</h3><p>We engineer for wind/snow, drainage, lighting integration, and EV conduit.</p></div>
-          <div class="card"><h3>Can we add EV chargers later?</h3><p>We stub conduit and capacity so Level 2/fast chargers can be added without rework.</p></div>
-          <div class="card"><h3>Referral program details?</h3><p>$2.5k per residential system >10 kW; bonuses for 7+ deals/month. We sell and install; you share your co-branded link.</p></div>
-        </div>
-      </section>
-
-      <section id="cta">
-        <h2>Book Your Auto Lot Solar Assessment</h2>
-        <p>15 minutes. Decision-ready in days. Shade + storage + EV readiness + referral revenue.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="https://calendly.com/your-calendly/15min" target="_blank" rel="noopener">Schedule on Calendly</a>
-          <a class="btn btn-secondary" href="tel:+11234567890">Call Now</a>
-          <a class="btn btn-secondary" href="#lead-form">Send Bill & Site Details</a>
         </div>
       </section>
     </main>
 
     <footer>
-      &copy; <span id="year"></span> Sol Solar. Canopies, storage, EV readiness, and referral revenue for auto lots.
+      &copy; <span id="year"></span> Sol Solar Robotics �?" referral partner to Dash Robotics.
+      Pudu Robotics is a registered trademark of its respective owner. All rights reserved.
     </footer>
   </div>
 
   <script>
+    // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Form handler (Formspree placeholder)
-    const form = document.getElementById('lead-form');
+    // Lead form handler with Formspree + WhatsApp click-to-chat
+    const form = document.getElementById('snapshot-form');
     const successMessage = document.getElementById('success-message');
     const statusBox = document.getElementById('form-status');
-    const submitBtn = form.querySelector('button[type="submit"]');
+    const submitBtn = form.querySelector('button[type=\"submit\"]');
 
-    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'; // replace with your endpoint
-
-    form.addEventListener('submit', async (e) => {
+    // Replace with your Formspree endpoint and your WhatsApp number (digits only)
+    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+    const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
+    // Optional: your serverless webhook that calls WhatsApp Cloud API
+    const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
+    form.addEventListener('submit', async function (e) {
       e.preventDefault();
       statusBox.style.display = 'none';
       statusBox.textContent = '';
 
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      // Guardrail: require a real endpoint
       if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
-        statusBox.textContent = 'Add your Formspree endpoint to activate submissions.';
+        statusBox.textContent = 'Add your Formspree endpoint (FORM_ENDPOINT) to activate submissions.';
         statusBox.className = 'form-status err';
         statusBox.style.display = 'block';
         return;
       }
 
-      const formData = new FormData(form);
+      // Send to Formspree (email/CRM)
       submitBtn.disabled = true;
-      const original = submitBtn.textContent;
+      const originalLabel = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
 
       try {
-        const response = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData });
-        if (!response.ok) throw new Error('Form submit failed');
+        const response = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData,
+        });
+
+        if (!response.ok) {
+          throw new Error('Form submit failed');
+        }
+
+        // Hit your WhatsApp Cloud API webhook (serverless) if provided
+        if (WA_WEBHOOK && !WA_WEBHOOK.includes('your-serverless-endpoint')) {
+          fetch(WA_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: data.name,
+              company: data.company,
+              role: data.role,
+              email: data.email,
+              phone: data.phone,
+              location: data.location,
+              type: data.type,
+              scale: data.scale,
+              timeline: data.timeline,
+              decision: data.decision,
+              priority: data.priority ? 'Yes' : 'No',
+              idea: data.idea
+            })
+          }).catch(() => {
+            // Best-effort; do not block user on webhook failure
+            console.warn('WhatsApp webhook call failed');
+          });
+        }
+
+        // Success UI
         successMessage.style.display = 'block';
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
+
+        // WhatsApp click-to-chat (opens a chat with prefilled info)
+        if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
+          const msg = encodeURIComponent(
+            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
+          );
+          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
+        }
       } catch (err) {
-        statusBox.textContent = 'Could not send. Please try again or email us.';
+        statusBox.textContent = 'Could not send. Please try again or email us directly.';
         statusBox.className = 'form-status err';
         statusBox.style.display = 'block';
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = original;
+        submitBtn.textContent = originalLabel;
       }
     });
+
   </script>
 </body>
 </html>
-
-
