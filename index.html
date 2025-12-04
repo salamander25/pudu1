@@ -422,6 +422,51 @@
       color: #e7ecf4;
       box-shadow: 0 6px 14px rgba(0,0,0,0.35);
     }
+    .trust-badges {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+      margin-bottom: 10px;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: linear-gradient(150deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+      color: #e7ecf4;
+    }
+    .trust-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(96,165,250,0.16);
+      color: #c7d2fe;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .trust-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.35;
+    }
+    .trust-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: #f8fafc;
+    }
+    .trust-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
     footer {
       padding-top: 24px;
       border-top: 1px solid rgba(255,255,255,0.04);
@@ -1092,11 +1137,42 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-        <footer>
+  <div class="trust-badges">
+    <div class="trust-badge">
+      <span class="trust-icon">✔</span>
+      <div class="trust-text">
+        <span class="trust-title">Authorized Robotics Partner</span>
+        <span class="trust-sub">Aligned with Dash Robotics & Pudu deployments</span>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <span class="trust-icon">⚡</span>
+      <div class="trust-text">
+        <span class="trust-title">Fast Local Response</span>
+        <span class="trust-sub">Priority support for San Diego & SoCal</span>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <span class="trust-icon">★</span>
+      <div class="trust-text">
+        <span class="trust-title">Client Satisfaction First</span>
+        <span class="trust-sub">No-pressure consults, clear ROI paths</span>
+      </div>
+    </div>
+    <div class="trust-badge">
+      <span class="trust-icon">🔒</span>
+      <div class="trust-text">
+        <span class="trust-title">Respectful Data Use</span>
+        <span class="trust-sub">Purpose-built updates; unsubscribe anytime</span>
+      </div>
+    </div>
+  </div>
+
+    <footer>
       &copy; <span id="year"></span> Sol Solar Robotics (referral partner to Dash Robotics).
       Pudu Robotics is a registered trademark of its respective owner. All rights reserved.
       <div class="social-links">
