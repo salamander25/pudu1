@@ -542,7 +542,7 @@
               <button class="btn-secondary" type="button" data-analytics="whatsapp" data-location="hero" data-label="Instant WhatsApp Chat">Instant WhatsApp Chat</button>
             </a>
             <a href="sms:19495915731?&body=I%20want%20a%20robot%20demo%20or%20solar%20savings%20review" target="_blank" rel="noreferrer">
-              <button class="btn-secondary" type="button">Text Me for a Demo (SMS)</button>
+              <button class="btn-secondary" type="button" data-analytics="sms" data-location="hero" data-label="Text Me for a Demo (SMS)">Text Me for a Demo (SMS)</button>
             </a>
           </div>
           <div class="hero-note">
@@ -1025,6 +1025,7 @@
      * - page_view { path, referrer }
      * - whatsapp_click { location, label }
      * - calendly_initiated { location, label }
+     * - sms_click { location, label }
      * - lead_form_start { form_name }
      * - lead_form_submitted { form_name, success }
      * - qr_visitor { campaign, source }
@@ -1054,6 +1055,9 @@
     function trackCalendlyInitiated(location, label) {
       sendAll('calendly_initiated', { location: location || '', label: label || '' });
     }
+    function trackSmsClick(location, label) {
+      sendAll('sms_click', { location: location || '', label: label || '' });
+    }
     function trackLeadFormStart(formName) {
       sendAll('lead_form_start', { form_name: formName || '' });
     }
@@ -1078,19 +1082,6 @@
         }
       } catch (e) {}
 
-      // Wire WhatsApp buttons
-      document.querySelectorAll('[data-analytics=\"whatsapp\"]').forEach(function (el) {
-        el.addEventListener('click', function () {
-          trackWhatsappClick(el.getAttribute('data-location'), el.getAttribute('data-label'));
-        });
-      });
-
-      // Wire Calendly buttons
-      document.querySelectorAll('[data-analytics=\"calendly\"]').forEach(function (el) {
-        el.addEventListener('click', function () {
-          trackCalendlyInitiated(el.getAttribute('data-location'), el.getAttribute('data-label'));
-        });
-      });
     });
   </script>
 
@@ -1105,10 +1096,75 @@
     const submitBtn = form.querySelector('button[type=\"submit\"]');
 
     // Replace with your Formspree endpoint and your WhatsApp number (digits only)
-    const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+    const FORM_ENDPOINT = 'https://formspree.io/f/mpwvladr';
     const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
     // Optional: your serverless webhook that calls WhatsApp Cloud API
     const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
+    // Optional: n8n webhook to mirror all CTA + form submissions for workflows
+    const N8N_WEBHOOK = 'https://your-n8n-webhook.example.com/robotics-leads'; // replace when ready
+
+    function sendToN8n(eventType, payload) {
+      if (!N8N_WEBHOOK || N8N_WEBHOOK.includes('your-n8n-webhook')) return;
+      var leadPayload = Object.assign({
+        event_type: eventType || '',
+        page: typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''
+      }, payload || {});
+      fetch(N8N_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(leadPayload)
+      }).catch(function () {
+        console.warn('n8n webhook call failed');
+      });
+    }
+
+    function sendCtaLead(eventType, payload) {
+      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) return;
+      var leadPayload = Object.assign({
+        event_type: eventType || '',
+        page: typeof window !== 'undefined' ? window.location.pathname + window.location.search : '',
+        channel: 'cta'
+      }, payload || {});
+      var leadForm = new FormData();
+      Object.keys(leadPayload).forEach(function (key) {
+        leadForm.append(key, leadPayload[key] || '');
+      });
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: leadForm
+      }).catch(function () {
+        console.warn('CTA lead -> Formspree failed');
+      });
+      sendToN8n(eventType, leadPayload);
+    }
+
+    // Wire CTA buttons to Formspree + n8n mirrors
+    document.querySelectorAll('[data-analytics=\"whatsapp\"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var loc = el.getAttribute('data-location') || '';
+        var label = el.getAttribute('data-label') || '';
+        trackWhatsappClick(loc, label);
+        sendCtaLead('whatsapp_click', { location: loc, label: label, channel: 'whatsapp' });
+      });
+    });
+    document.querySelectorAll('[data-analytics=\"calendly\"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var loc = el.getAttribute('data-location') || '';
+        var label = el.getAttribute('data-label') || '';
+        trackCalendlyInitiated(loc, label);
+        sendCtaLead('calendly_initiated', { location: loc, label: label, channel: 'calendly' });
+      });
+    });
+    document.querySelectorAll('[data-analytics=\"sms\"]').forEach(function (el) {
+      el.addEventListener('click', function () {
+        var loc = el.getAttribute('data-location') || '';
+        var label = el.getAttribute('data-label') || '';
+        trackSmsClick(loc, label);
+        sendCtaLead('sms_click', { location: loc, label: label, channel: 'sms' });
+      });
+    });
+
     // Lead form start event on first interaction
     let formStarted = false;
     form.addEventListener('focusin', function () {
@@ -1181,6 +1237,8 @@
         form.reset();
         // Track successful lead capture
         trackLeadFormSubmitted('snapshot_form', true);
+        // Mirror to n8n for workflows
+        sendToN8n('snapshot_form_submitted', Object.assign({ channel: 'form_snapshot' }, data));
 
         // WhatsApp click-to-chat (opens a chat with prefilled info)
         if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
