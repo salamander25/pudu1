@@ -652,6 +652,38 @@
       opacity: 0.8;
       margin-top: 8px;
     }
+    .privacy-section {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(150deg, rgba(8, 14, 24, 0.9), rgba(3, 8, 16, 0.85));
+      box-shadow: var(--shadow);
+    }
+    .privacy-section h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      color: #f8fafc;
+    }
+    .privacy-section p {
+      margin: 0 0 10px;
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+    .privacy-list {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
+      color: #cbd5e1;
+      font-size: 13px;
+    }
+    .privacy-meta {
+      margin-top: 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
   </style>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -719,6 +751,7 @@
         <a href="#snapshot">Get Snapshot</a>
         <a href="#videos">Videos</a>
         <a href="#book">Book Call</a>
+        <a href="#privacy">Privacy</a>
       </nav>
     </header>
 
@@ -1280,6 +1313,24 @@
         </div>
       </div>
     </div>
+
+    <section id="privacy" class="privacy-section" aria-label="Privacy statement">
+      <h3>Privacy Statement</h3>
+      <p>
+        We collect and process personal information (for example: name, email, phone number, company details, and message content) only when you provide it through this website, calls, messaging, or scheduling tools.
+      </p>
+      <ul class="privacy-list">
+        <li><strong>Purpose of use:</strong> to respond to inquiries, schedule demos, provide requested pricing or service details, and improve service quality.</li>
+        <li><strong>Legal basis and rights:</strong> we process data based on consent, contract needs, and legitimate business interests where applicable; you may request access, correction, deletion, or limitation of your information.</li>
+        <li><strong>No sale of personal data:</strong> we do not sell personal information; we only share data with service providers needed to run this site and communications (for example hosting, analytics, scheduling, and CRM tools) under contractual safeguards.</li>
+        <li><strong>Marketing choices:</strong> you may opt out of marketing emails or text communications at any time using unsubscribe links or by contacting us directly.</li>
+        <li><strong>Security and retention:</strong> we use reasonable administrative, technical, and organizational protections and keep data only as long as necessary for business, legal, and compliance requirements.</li>
+        <li><strong>Children's privacy:</strong> this website is not directed to children under 13, and we do not knowingly collect personal information from children.</li>
+      </ul>
+      <p class="privacy-meta">
+        Effective date: April 22, 2026. This statement is intended as a general privacy notice and should be reviewed by legal counsel for jurisdiction-specific requirements (including U.S. state privacy laws such as CCPA/CPRA where applicable).
+      </p>
+    </section>
 
     <footer>
       &copy; <span id="year"></span> Sol Solar Robotics (referral partner to Dash Robotics).
