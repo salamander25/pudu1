@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sol Solar Solutions | Solar Quote</title>
+  <meta name="description" content="Get a personalized solar quote from Sol Solar Solutions and opt in to SMS updates with clear consent language." />
+  <style>
+    :root {
+      --bg: #f7fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --brand: #0ea5e9;
+      --brand-dark: #0369a1;
+      --border: #dbe2ea;
+      --ok: #166534;
+      --err: #b91c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #e0f2fe 0%, var(--bg) 40%);
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin: 8px 0;
+      line-height: 1.1;
+    }
+    .subtitle { color: var(--muted); margin: 0 auto; max-width: 620px; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+    #leadForm {
+      display: grid;
+      gap: 12px;
+    }
+    label { font-size: 0.93rem; font-weight: 600; }
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      padding: 11px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .consent-wrap {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.86rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .consent-wrap input { margin-top: 3px; }
+    button {
+      margin-top: 4px;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--brand);
+      cursor: pointer;
+    }
+    button:hover { background: var(--brand-dark); }
+    .links {
+      margin-top: 14px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+    .links a { color: var(--brand-dark); }
+    .status {
+      display: none;
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+    .status.ok { display: block; background: #dcfce7; color: var(--ok); }
+    .status.err { display: block; background: #fee2e2; color: var(--err); }
+    @media (max-width: 600px) {
+      .card { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p>Sol Solar Solutions LLC</p>
+      <h1>Lower your electric bill with a custom solar quote.</h1>
+      <p class="subtitle">Request your quote in under 60 seconds. SMS updates are optional and require your explicit consent.</p>
+    </section>
+
+    <section class="card" aria-label="Lead capture form">
+      <form id="leadForm">
+        <div>
+          <label for="first_name">First name</label>
+          <input id="first_name" type="text" name="first_name" autocomplete="given-name" required />
+        </div>
+
+        <div>
+          <label for="last_name">Last name</label>
+          <input id="last_name" type="text" name="last_name" autocomplete="family-name" required />
+        </div>
+
+        <div>
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" name="phone" autocomplete="tel" required />
+        </div>
+
+        <div>
+          <label for="address">Service address</label>
+          <input id="address" type="text" name="address" autocomplete="street-address" required />
+        </div>
+
+        <label class="consent-wrap" for="consent">
+          <input id="consent" type="checkbox" name="consent" value="true" />
+          <span>
+            By submitting, you agree to receive SMS messages from Sol Solar Solutions LLC regarding your inquiry, appointments,
+            and offers. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. Reply HELP for help.
+          </span>
+        </label>
+
+        <button type="submit">Get My Solar Quote</button>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <div class="links">
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms &amp; Conditions</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('leadForm');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusEl.className = 'status';
+      statusEl.textContent = '';
+
+      const payload = {
+        first_name: form.first_name.value.trim(),
+        last_name: form.last_name.value.trim(),
+        phone: form.phone.value.trim(),
+        address: form.address.value.trim(),
+        consent: Boolean(form.consent.checked),
+        source: 'website'
+      };
+
+      try {
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error('Unable to save lead.');
+        }
+
+        const result = await response.json();
+        statusEl.className = 'status ok';
+        statusEl.textContent = result.message || 'Thanks! We received your request.';
+        form.reset();
+      } catch (error) {
+        statusEl.className = 'status err';
+        statusEl.textContent = error.message || 'Something went wrong. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>

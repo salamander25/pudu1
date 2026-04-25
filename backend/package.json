@@ -1,0 +1,13 @@
+{
+  "name": "sol-solar-sms-backend",
+  "version": "1.0.0",
+  "description": "Twilio-compliant SMS opt-in lead API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "twilio": "^5.5.4"
+  }
+}

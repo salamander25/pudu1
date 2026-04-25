@@ -1,0 +1,202 @@
+{
+  "name": "Sol Solar Solutions - Twilio Compliant SMS Opt-In Funnel",
+  "nodes": [
+    {
+      "id": "webhook_new_lead",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sol-solar/new-lead",
+        "responseMode": "responseNode"
+      }
+    },
+    {
+      "id": "if_consent",
+      "name": "Consent Provided?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json[\"lead\"][\"consent\"]}}",
+              "operation": "isTrue"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "airtable_store",
+      "name": "Store Lead",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "parameters": {
+        "operation": "create",
+        "base": "appXXXXXXXX",
+        "table": "Leads",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "first_name": "={{$json[\"lead\"][\"first_name\"]}}",
+            "last_name": "={{$json[\"lead\"][\"last_name\"]}}",
+            "phone": "={{$json[\"lead\"][\"phone\"]}}",
+            "address": "={{$json[\"lead\"][\"address\"]}}",
+            "consent": "={{$json[\"lead\"][\"consent\"]}}",
+            "timestamp": "={{$json[\"lead\"][\"timestamp\"]}}",
+            "lead_score": "cold",
+            "status": "new",
+            "source": "website"
+          }
+        }
+      }
+    },
+    {
+      "id": "twilio_initial",
+      "name": "Send Initial SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json[\"lead\"][\"phone\"]}}",
+        "message": "Sol Solar Solutions: Thanks for requesting your solar quote. Reply STOP to opt out."
+      }
+    },
+    {
+      "id": "twilio_double_opt_in",
+      "name": "Send Double Opt-In (Recommended)",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json[\"lead\"][\"phone\"]}}",
+        "message": "Reply YES to confirm you want to receive solar updates from Sol Solar Solutions."
+      }
+    },
+    {
+      "id": "wait_2min",
+      "name": "Wait 2 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      }
+    },
+    {
+      "id": "twilio_followup",
+      "name": "Follow-Up SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json[\"lead\"][\"phone\"]}}",
+        "message": "Quick question — are you looking to lower your electric bill this month or just exploring options?"
+      }
+    },
+    {
+      "id": "webhook_inbound_reply",
+      "name": "Inbound Reply Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "sol-solar/inbound-reply",
+        "responseMode": "responseNode"
+      }
+    },
+    {
+      "id": "classify_reply",
+      "name": "Classify Reply",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "parameters": {
+        "functionCode": "const body = ($json.Body || '').toLowerCase();\nlet lead_score = 'cold';\nlet status = 'new';\nif (body.includes('lower') || body.includes('yes')) { lead_score = 'hot'; status = 'hot'; }\nelse if (body.includes('exploring')) { lead_score = 'warm'; status = 'warm'; }\nreturn [{ json: { ...$json, lead_score, status } }];"
+      }
+    },
+    {
+      "id": "wait_24h",
+      "name": "Wait 24 Hours",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "parameters": {
+        "amount": 24,
+        "unit": "hours"
+      }
+    },
+    {
+      "id": "twilio_no_reply_followup",
+      "name": "No Reply Follow-Up",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "parameters": {
+        "resource": "message",
+        "operation": "send",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json[\"lead\"][\"phone\"]}}",
+        "message": "Just checking in on your solar quote request. Reply STOP to opt out or HELP for help."
+      }
+    },
+    {
+      "id": "respond",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true }"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [[{ "node": "Store Lead", "type": "main", "index": 0 }]]
+    },
+    "Store Lead": {
+      "main": [[{ "node": "Consent Provided?", "type": "main", "index": 0 }]]
+    },
+    "Consent Provided?": {
+      "main": [
+        [{ "node": "Send Initial SMS", "type": "main", "index": 0 }],
+        [{ "node": "Webhook Response", "type": "main", "index": 0 }]
+      ]
+    },
+    "Send Initial SMS": {
+      "main": [[{ "node": "Send Double Opt-In (Recommended)", "type": "main", "index": 0 }]]
+    },
+    "Send Double Opt-In (Recommended)": {
+      "main": [[{ "node": "Wait 2 Minutes", "type": "main", "index": 0 }]]
+    },
+    "Wait 2 Minutes": {
+      "main": [[{ "node": "Follow-Up SMS", "type": "main", "index": 0 }]]
+    },
+    "Follow-Up SMS": {
+      "main": [[{ "node": "Wait 24 Hours", "type": "main", "index": 0 }]]
+    },
+    "Wait 24 Hours": {
+      "main": [[{ "node": "No Reply Follow-Up", "type": "main", "index": 0 }]]
+    },
+    "No Reply Follow-Up": {
+      "main": [[{ "node": "Webhook Response", "type": "main", "index": 0 }]]
+    },
+    "Inbound Reply Webhook": {
+      "main": [[{ "node": "Classify Reply", "type": "main", "index": 0 }]]
+    },
+    "Classify Reply": {
+      "main": [[{ "node": "Webhook Response", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "saveExecutionProgress": true,
+    "executionOrder": "v1"
+  }
+}
