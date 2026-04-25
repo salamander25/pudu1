@@ -1,0 +1,217 @@
+{
+  "name": "Sol Solar SMS Opt-In Funnel",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "sol-solar-lead",
+        "httpMethod": "POST",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "Webhook_Lead_In",
+      "name": "Lead Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 280]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{$json.consent}}",
+              "operation": "isTrue"
+            }
+          ]
+        }
+      },
+      "id": "If_Consent",
+      "name": "Consent Given?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 280]
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": "appXXXXXXXX",
+        "table": "Leads",
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "first_name": "={{$json.first_name}}",
+            "last_name": "={{$json.last_name}}",
+            "phone": "={{$json.phone}}",
+            "address": "={{$json.address}}",
+            "consent": "={{$json.consent}}",
+            "timestamp": "={{$json.timestamp}}",
+            "lead_score": "0",
+            "status": "new",
+            "source": "={{$json.source || 'website'}}"
+          }
+        }
+      },
+      "id": "Airtable_Create_Lead",
+      "name": "Store Lead",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2,
+      "position": [680, 180]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json.phone}}",
+        "message": "Sol Solar Solutions: Thanks for requesting your solar quote. Reply STOP to opt out."
+      },
+      "id": "Twilio_Initial_SMS",
+      "name": "Send Initial SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [900, 180]
+    },
+    {
+      "parameters": {
+        "amount": 2,
+        "unit": "minutes"
+      },
+      "id": "Wait_2_Min",
+      "name": "Wait 2 Minutes",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1120, 180]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json.phone}}",
+        "message": "Quick question — are you looking to lower your electric bill this month or just exploring options?"
+      },
+      "id": "Twilio_Follow_Up",
+      "name": "Send Follow-up",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [1340, 180]
+    },
+    {
+      "parameters": {
+        "amount": 24,
+        "unit": "hours"
+      },
+      "id": "Wait_24h",
+      "name": "Wait 24 Hours",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1560, 180]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "from": "+1XXXXXXXXXX",
+        "to": "={{$json.phone}}",
+        "message": "Just checking in on your solar quote request. Reply STOP to opt out, or HELP for help."
+      },
+      "id": "Twilio_24h_Nudge",
+      "name": "24h Nudge",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [1780, 180]
+    },
+    {
+      "parameters": {
+        "path": "sol-solar-reply",
+        "httpMethod": "POST",
+        "responseMode": "onReceived"
+      },
+      "id": "Webhook_Reply_In",
+      "name": "Reply Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [680, 420]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{($json.Body || '').toLowerCase()}}",
+              "operation": "contains",
+              "value2": "lower"
+            },
+            {
+              "value1": "={{($json.Body || '').toLowerCase()}}",
+              "operation": "contains",
+              "value2": "yes"
+            }
+          ]
+        },
+        "combineOperation": "any"
+      },
+      "id": "If_Hot",
+      "name": "HOT Reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [900, 420]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{($json.Body || '').toLowerCase()}}",
+              "operation": "contains",
+              "value2": "exploring"
+            }
+          ]
+        }
+      },
+      "id": "If_Warm",
+      "name": "WARM Reply?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 520]
+    }
+  ],
+  "connections": {
+    "Lead Webhook": {
+      "main": [[{"node": "Consent Given?", "type": "main", "index": 0}]]
+    },
+    "Consent Given?": {
+      "main": [
+        [{"node": "Store Lead", "type": "main", "index": 0}],
+        [{"node": "Store Lead", "type": "main", "index": 0}]
+      ]
+    },
+    "Store Lead": {
+      "main": [[{"node": "Send Initial SMS", "type": "main", "index": 0}]]
+    },
+    "Send Initial SMS": {
+      "main": [[{"node": "Wait 2 Minutes", "type": "main", "index": 0}]]
+    },
+    "Wait 2 Minutes": {
+      "main": [[{"node": "Send Follow-up", "type": "main", "index": 0}]]
+    },
+    "Send Follow-up": {
+      "main": [[{"node": "Wait 24 Hours", "type": "main", "index": 0}]]
+    },
+    "Wait 24 Hours": {
+      "main": [[{"node": "24h Nudge", "type": "main", "index": 0}]]
+    },
+    "Reply Webhook": {
+      "main": [[{"node": "HOT Reply?", "type": "main", "index": 0}]]
+    },
+    "HOT Reply?": {
+      "main": [
+        [],
+        [{"node": "WARM Reply?", "type": "main", "index": 0}]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "pinData": {},
+  "meta": {
+    "notes": "After import, map Airtable and Twilio credentials. Optional double opt-in: replace Send Initial SMS body with YES confirmation and gate subsequent messages on YES response."
+  }
+}
