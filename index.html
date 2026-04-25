@@ -527,7 +527,7 @@
     }
     .sticky-cta .bar {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 10px;
       background: rgba(12,16,26,0.9);
       border: 1px solid var(--border);
@@ -652,6 +652,32 @@
       opacity: 0.8;
       margin-top: 8px;
     }
+    .intake-step {
+      display: none;
+      gap: 12px;
+    }
+    .intake-step.active {
+      display: grid;
+    }
+    .step-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .project-fields {
+      display: none;
+      gap: 12px;
+    }
+    .project-fields.active {
+      display: grid;
+    }
+    .step-indicator {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
   </style>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -736,6 +762,7 @@
             <span class="badge">Local + Priority Slots</span>
           </div>
           <div class="hero-actions">
+            <button class="btn-primary" type="button" id="hero-get-quote" data-analytics="quote" data-location="hero" data-label="Get a Quote (Hero)">Get a Quote</button>
             <a href="https://calendly.com/salvadorcastillo2020/30min?utm_source=site&utm_medium=cta&utm_campaign=hero" target="_blank" rel="noreferrer">
               <button class="btn-primary" type="button" data-analytics="calendly" data-location="hero" data-label="Book D9 / Solar Strategy Call">Book D9 / Solar Strategy Call</button>
             </a>
@@ -1013,98 +1040,186 @@
                 <label for="website">Leave this field empty</label>
                 <input id="website" name="website" tabindex="-1" autocomplete="off">
               </div>
-              <div>
-                <label for="name">Full Name *</label>
-                <input id="name" name="name" required>
+              <div class="intake-step active" data-step="1">
+                <div class="step-indicator">Step 1 of 3</div>
+                <div>
+                  <label for="project_type">Project Type *</label>
+                  <select id="project_type" name="project_type" required>
+                    <option value="">Select project type...</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="BESS">BESS</option>
+                    <option value="Data Center">Data Center</option>
+                  </select>
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn-primary" id="to-step-2">Next: Project Details</button>
+                </div>
               </div>
-              <div>
-                <label for="company">Company / Venue Name *</label>
-                <input id="company" name="company" required>
+              <div class="intake-step" data-step="2">
+                <div class="step-indicator">Step 2 of 3</div>
+                <div class="project-fields" data-project="Residential">
+                  <div>
+                    <label for="res_home_type">Home Type *</label>
+                    <select id="res_home_type" name="res_home_type">
+                      <option value="">Select...</option>
+                      <option>Single-family</option>
+                      <option>Multi-family</option>
+                      <option>HOA / Condo</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="res_bill">Average Monthly Electric Bill *</label>
+                    <select id="res_bill" name="res_bill">
+                      <option value="">Select...</option>
+                      <option>Under $150</option>
+                      <option>$150-$300</option>
+                      <option>$300-$500</option>
+                      <option>$500+</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="project-fields" data-project="Commercial">
+                  <div>
+                    <label for="com_sites">Number of Sites *</label>
+                    <select id="com_sites" name="com_sites">
+                      <option value="">Select...</option>
+                      <option>1 site</option>
+                      <option>2-5 sites</option>
+                      <option>6+ sites</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="com_segment">Commercial Segment *</label>
+                    <select id="com_segment" name="com_segment">
+                      <option value="">Select...</option>
+                      <option>Hospitality / Restaurant</option>
+                      <option>Healthcare</option>
+                      <option>Warehouse / Logistics</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="project-fields" data-project="BESS">
+                  <div>
+                    <label for="bess_size">Target Storage Size *</label>
+                    <select id="bess_size" name="bess_size">
+                      <option value="">Select...</option>
+                      <option>&lt; 1 MWh</option>
+                      <option>1-10 MWh</option>
+                      <option>10-50 MWh</option>
+                      <option>50+ MWh</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="bess_interconnect">Interconnection Status *</label>
+                    <select id="bess_interconnect" name="bess_interconnect">
+                      <option value="">Select...</option>
+                      <option>Not started</option>
+                      <option>In utility review</option>
+                      <option>Approved</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="project-fields" data-project="Data Center">
+                  <div>
+                    <label for="dc_capacity">Critical Load Capacity *</label>
+                    <select id="dc_capacity" name="dc_capacity">
+                      <option value="">Select...</option>
+                      <option>&lt; 5 MW</option>
+                      <option>5-20 MW</option>
+                      <option>20-100 MW</option>
+                      <option>100+ MW</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="dc_tier">Facility Tier *</label>
+                    <select id="dc_tier" name="dc_tier">
+                      <option value="">Select...</option>
+                      <option>Tier II</option>
+                      <option>Tier III</option>
+                      <option>Tier IV</option>
+                      <option>Hyperscale</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label for="timeline">Desired timeline *</label>
+                  <select id="timeline" name="timeline" required>
+                    <option value="">Select...</option>
+                    <option>ASAP / priority</option>
+                    <option>This month</option>
+                    <option>Next 2-3 months</option>
+                    <option>Exploring / planning</option>
+                  </select>
+                </div>
+                <div class="checkbox-row">
+                  <input id="tribal_compliance" type="checkbox" name="tribal_compliance">
+                  <label for="tribal_compliance">This project includes tribal land, permitting complexity, or compliance-heavy requirements.</label>
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn-secondary" id="back-to-step-1">Back</button>
+                  <button type="button" class="btn-primary" id="to-step-3">Next: Contact Info</button>
+                </div>
               </div>
-              <div>
-                <label for="role">Your Role *</label>
-                <select id="role" name="role" required>
-                  <option value="">Select...</option>
-                  <option>Owner / Partner</option>
-                  <option>General Manager</option>
-                  <option>Director</option>
-                  <option>Operations / Facilities</option>
-                  <option>Other</option>
-                </select>
+              <div class="intake-step" data-step="3">
+                <div class="step-indicator">Step 3 of 3</div>
+                <div>
+                  <label for="name">Full Name *</label>
+                  <input id="name" name="name" required>
+                </div>
+                <div>
+                  <label for="company">Company / Organization *</label>
+                  <input id="company" name="company" required>
+                </div>
+                <div>
+                  <label for="role">Your Role *</label>
+                  <select id="role" name="role" required>
+                    <option value="">Select...</option>
+                    <option>Owner / Partner</option>
+                    <option>General Manager</option>
+                    <option>Director</option>
+                    <option>Operations / Facilities</option>
+                    <option>Procurement / Finance</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="email">Email *</label>
+                  <input id="email" type="email" name="email" required>
+                </div>
+                <div>
+                  <label for="phone">Mobile / WhatsApp (optional)</label>
+                  <input id="phone" name="phone">
+                </div>
+                <div>
+                  <label for="location">City &amp; State *</label>
+                  <input id="location" name="location" required>
+                </div>
+                <div>
+                  <label for="idea">Project Notes</label>
+                  <textarea id="idea" name="idea" placeholder="Share goals, site constraints, urgency, and deployment details."></textarea>
+                </div>
+                <div class="step-actions">
+                  <button type="button" class="btn-secondary" id="back-to-step-2">Back</button>
+                </div>
               </div>
-              <div>
-                <label for="email">Email *</label>
-                <input id="email" type="email" name="email" required>
+              <div id="step3-meta" style="display:none;">
+                <div class="checkbox-row">
+                  <input id="priority" type="checkbox" name="priority">
+                  <label for="priority">
+                    I want priority treatment for enterprise-scale deployment.
+                  </label>
+                </div>
+                <div class="checkbox-row">
+                  <input id="optin" type="checkbox" name="optin">
+                  <label for="optin">
+                    I agree to receive emails from Dash Robotics about robotics solutions, case studies, and special
+                    opportunities. I can unsubscribe at any time.
+                  </label>
+                </div>
               </div>
-              <div>
-                <label for="phone">Mobile / WhatsApp (optional)</label>
-                <input id="phone" name="phone">
-              </div>
-              <div>
-                <label for="location">City &amp; State *</label>
-                <input id="location" name="location" required>
-              </div>
-              <div>
-                <label for="type">Business Type *</label>
-                <select id="type" name="type" required>
-                  <option value="">Select...</option>
-                  <option>Restaurant / Cafe</option>
-                  <option>Hotel / Resort</option>
-                  <option>Hospital / Clinic</option>
-                  <option>Office / Coworking</option>
-                  <option>Event Venue / Nightlife</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div>
-                <label for="scale">Volume / Scale *</label>
-                <select id="scale" name="scale" required>
-                  <option value="">Select...</option>
-                  <option>Single location pilot</option>
-                  <option>Multi-location (2-5)</option>
-                  <option>Franchise group / chain (6+)</option>
-                  <option>Warehouse / logistics hub</option>
-                </select>
-              </div>
-              <div>
-                <label for="timeline">Desired timeline *</label>
-                <select id="timeline" name="timeline" required>
-                  <option value="">Select...</option>
-                  <option>ASAP / priority</option>
-                  <option>This month</option>
-                  <option>Next 2-3 months</option>
-                  <option>Exploring / planning</option>
-                </select>
-              </div>
-              <div>
-                <label for="decision">Your role in decision *</label>
-                <select id="decision" name="decision" required>
-                  <option value="">Select...</option>
-                  <option>Final decision maker</option>
-                  <option>Recommender / evaluator</option>
-                  <option>Operations lead</option>
-                  <option>Finance / procurement</option>
-                </select>
-              </div>
-              <div>
-                <label for="idea">Where do you imagine using robots?</label>
-                <textarea id="idea" name="idea"
-                          placeholder="Food running, bottle service, lobby greeting, amenity delivery, etc."></textarea>
-              </div>
-              <div class="checkbox-row">
-                <input id="priority" type="checkbox" name="priority">
-                <label for="priority">
-                  I want priority treatment for bulk/franchise/warehouse deployment.
-                </label>
-              </div>
-              <div class="checkbox-row">
-                <input id="optin" type="checkbox" name="optin">
-                <label for="optin">
-                  I agree to receive emails from Dash Robotics about robotics solutions, case studies, and special
-                  opportunities. I can unsubscribe at any time.
-                </label>
-              </div>
-              <div>
+              <div id="submit-row" style="display:none;">
                 <button type="submit" class="btn-primary" style="width:100%;">Send My Robotics Snapshot</button>
               </div>
               <div id="success-message" class="success-message">
@@ -1320,6 +1435,7 @@
   <div class="sticky-cta">
     <div class="page">
       <div class="bar">
+        <button class="btn-primary" type="button" id="sticky-get-quote" data-analytics="quote" data-location="sticky" data-label="Get a Quote (Sticky)">Get a Quote</button>
         <a href="https://calendly.com/salvadorcastillo2020/30min" target="_blank" rel="noreferrer">
           <button class="btn-primary" type="button" data-analytics="calendly" data-location="sticky" data-label="Book Discovery Call (Sticky)">Book Discovery Call</button>
         </a>
@@ -1400,14 +1516,20 @@
     // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lead form handler with Formspree + WhatsApp click-to-chat
+    // Lead form handler with Airtable + WhatsApp click-to-chat
     const form = document.getElementById('snapshot-form');
     const successMessage = document.getElementById('success-message');
     const statusBox = document.getElementById('form-status');
     const submitBtn = form.querySelector('button[type=\"submit\"]');
+    const intakeSteps = Array.from(document.querySelectorAll('.intake-step'));
+    const projectTypeSelect = document.getElementById('project_type');
+    const projectFieldGroups = Array.from(document.querySelectorAll('.project-fields'));
 
-    // Replace with your Formspree endpoint and your WhatsApp number (digits only)
-    const FORM_ENDPOINT = 'https://formspree.io/f/mpwvladr';
+    // Replace with your Airtable credentials and your WhatsApp number (digits only)
+    const AIRTABLE_BASE_ID = 'YOUR_AIRTABLE_BASE_ID';
+    const AIRTABLE_TABLE_NAME = 'Leads';
+    const AIRTABLE_PAT = 'YOUR_AIRTABLE_PAT';
+    const AIRTABLE_ENDPOINT = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE_NAME)}`;
     const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
     // Optional: your serverless webhook that calls WhatsApp Cloud API
     const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
@@ -1420,6 +1542,7 @@
     // Rate limit for form submits (ms)
     const MIN_SUBMIT_MS = 5000;
     let lastSubmitAt = 0;
+    let currentStep = 1;
 
     // Capture UTM params once
     try {
@@ -1446,23 +1569,11 @@
     }
 
     function sendCtaLead(eventType, payload) {
-      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) return;
       var leadPayload = Object.assign({
         event_type: eventType || '',
         page: typeof window !== 'undefined' ? window.location.pathname + window.location.search : '',
         channel: 'cta'
       }, utmParams, payload || {});
-      var leadForm = new FormData();
-      Object.keys(leadPayload).forEach(function (key) {
-        leadForm.append(key, leadPayload[key] || '');
-      });
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: leadForm
-      }).catch(function () {
-        console.warn('CTA lead -> Formspree failed');
-      });
       sendToN8n(eventType, leadPayload);
     }
 
@@ -1493,7 +1604,7 @@
       })
       .catch(function () {});
 
-    // Wire CTA buttons to Formspree + n8n mirrors
+    // Wire CTA buttons to tracking + n8n mirrors
     document.querySelectorAll('[data-analytics=\"whatsapp\"]').forEach(function (el) {
       el.addEventListener('click', function () {
         var loc = el.getAttribute('data-location') || '';
@@ -1522,6 +1633,92 @@
       });
     });
 
+    function showStep(step) {
+      currentStep = step;
+      intakeSteps.forEach(function (panel) {
+        panel.classList.toggle('active', Number(panel.getAttribute('data-step')) === step);
+      });
+      var submitRow = document.getElementById('submit-row');
+      var step3Meta = document.getElementById('step3-meta');
+      if (submitRow) submitRow.style.display = step === 3 ? 'block' : 'none';
+      if (step3Meta) step3Meta.style.display = step === 3 ? 'grid' : 'none';
+    }
+
+    function updateProjectBranching() {
+      var selectedType = projectTypeSelect.value;
+      projectFieldGroups.forEach(function (group) {
+        var isActive = group.getAttribute('data-project') === selectedType;
+        group.classList.toggle('active', isActive);
+        group.querySelectorAll('input, select, textarea').forEach(function (field) {
+          field.required = isActive;
+        });
+      });
+    }
+
+    function openQuoteIntake(source) {
+      var snapshot = document.getElementById('snapshot');
+      if (snapshot) {
+        snapshot.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      showStep(1);
+      projectTypeSelect.focus();
+      trackLeadFormStart('snapshot_form');
+      sendCtaLead('quote_intake_opened', { location: source || 'unknown', label: 'Get a Quote', channel: 'quote' });
+      incrementCounter('cta_clicks', 'click-count');
+    }
+
+    function computeQualificationScore(data) {
+      var score = 20;
+      if (data.project_type === 'Data Center') score += 35;
+      if (data.project_type === 'BESS') score += 25;
+      if (data.project_type === 'Commercial') score += 20;
+      if (data.project_type === 'Residential') score += 10;
+      if (data.timeline === 'ASAP / priority') score += 20;
+      if (data.timeline === 'This month') score += 12;
+      if (data.priority) score += 15;
+      if (data.tribal_compliance) score += 10;
+      return Math.min(score, 100);
+    }
+
+    function determineRoutingQueue(data) {
+      if (data.project_type === 'Data Center') return 'Enterprise/data-center priority queue';
+      if (data.tribal_compliance) return 'Tribal/compliance queue';
+      if (data.project_type === 'Residential') return 'Residential queue';
+      return 'Commercial queue';
+    }
+
+    document.getElementById('hero-get-quote').addEventListener('click', function () { openQuoteIntake('hero'); });
+    document.getElementById('sticky-get-quote').addEventListener('click', function () { openQuoteIntake('sticky'); });
+    document.getElementById('to-step-2').addEventListener('click', function () {
+      if (!projectTypeSelect.value) {
+        projectTypeSelect.reportValidity();
+        return;
+      }
+      updateProjectBranching();
+      showStep(2);
+    });
+    document.getElementById('back-to-step-1').addEventListener('click', function () { showStep(1); });
+    document.getElementById('to-step-3').addEventListener('click', function () {
+      var activeFields = document.querySelectorAll('.project-fields.active select, .project-fields.active input, .project-fields.active textarea');
+      for (var i = 0; i < activeFields.length; i++) {
+        if (!activeFields[i].checkValidity()) {
+          activeFields[i].reportValidity();
+          return;
+        }
+      }
+      var timelineField = document.getElementById('timeline');
+      if (!timelineField.checkValidity()) {
+        timelineField.reportValidity();
+        return;
+      }
+      showStep(3);
+    });
+    document.getElementById('back-to-step-2').addEventListener('click', function () { showStep(2); });
+    projectTypeSelect.addEventListener('change', updateProjectBranching);
+
+    updateProjectBranching();
+    showStep(1);
+
     // Lead form start event on first interaction
     let formStarted = false;
     form.addEventListener('focusin', function () {
@@ -1538,6 +1735,9 @@
 
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
+      data.priority = formData.get('priority') ? true : false;
+      data.optin = formData.get('optin') ? true : false;
+      data.tribal_compliance = formData.get('tribal_compliance') ? true : false;
       // Honeypot: block bots
       if (data.website && data.website.trim()) {
         return;
@@ -1551,32 +1751,56 @@
         return;
       }
       lastSubmitAt = now;
-      // Append attribution/context
-      formData.append('channel', 'form_snapshot');
-      formData.append('page_url', typeof window !== 'undefined' ? window.location.href : '');
-      Object.keys(utmParams).forEach(function (key) {
-        formData.append(key, utmParams[key] || '');
-        data[key] = utmParams[key] || '';
-      });
-
-      // Guardrail: require a real endpoint
-      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
-        statusBox.textContent = 'Add your Formspree endpoint (FORM_ENDPOINT) to activate submissions.';
+      // Guardrail: require Airtable credentials
+      if (AIRTABLE_BASE_ID.includes('YOUR_') || AIRTABLE_PAT.includes('YOUR_')) {
+        statusBox.textContent = 'Add Airtable credentials (AIRTABLE_BASE_ID + AIRTABLE_PAT) to activate submissions.';
         statusBox.className = 'form-status err';
         statusBox.style.display = 'block';
         return;
       }
 
-      // Send to Formspree (email/CRM)
+      const leadType = data.project_type || 'Unknown';
+      const qualificationScore = computeQualificationScore(data);
+      const routingQueue = determineRoutingQueue(data);
+
+      // Build Airtable payload with routing + qualification
+      const airtableFields = {
+        name: data.name || '',
+        company: data.company || '',
+        role: data.role || '',
+        email: data.email || '',
+        phone: data.phone || '',
+        location: data.location || '',
+        project_type: data.project_type || '',
+        timeline: data.timeline || '',
+        notes: data.idea || '',
+        lead_type: leadType,
+        qualification_score: qualificationScore,
+        routing_queue: routingQueue,
+        tribal_compliance: data.tribal_compliance ? 'Yes' : 'No',
+        priority: data.priority ? 'Yes' : 'No',
+        page_url: typeof window !== 'undefined' ? window.location.href : ''
+      };
+      Object.keys(utmParams).forEach(function (key) {
+        airtableFields[key] = utmParams[key] || '';
+      });
+      ['res_home_type', 'res_bill', 'com_sites', 'com_segment', 'bess_size', 'bess_interconnect', 'dc_capacity', 'dc_tier'].forEach(function (field) {
+        if (data[field]) airtableFields[field] = data[field];
+      });
+
+      // Send to Airtable
       submitBtn.disabled = true;
       const originalLabel = submitBtn.textContent;
       submitBtn.textContent = 'Sending...';
 
       try {
-        const response = await fetch(FORM_ENDPOINT, {
+        const response = await fetch(AIRTABLE_ENDPOINT, {
           method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData,
+          headers: {
+            'Authorization': `Bearer ${AIRTABLE_PAT}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ fields: airtableFields }),
         });
 
         if (!response.ok) {
@@ -1595,10 +1819,12 @@
               email: data.email,
               phone: data.phone,
               location: data.location,
-              type: data.type,
-              scale: data.scale,
+              project_type: data.project_type,
               timeline: data.timeline,
-              decision: data.decision,
+              lead_type: leadType,
+              qualification_score: qualificationScore,
+              routing_queue: routingQueue,
+              tribal_compliance: data.tribal_compliance ? 'Yes' : 'No',
               priority: data.priority ? 'Yes' : 'No',
               idea: data.idea
             })
@@ -1612,15 +1838,22 @@
         successMessage.style.display = 'block';
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
+        updateProjectBranching();
+        showStep(1);
         // Track successful lead capture
         trackLeadFormSubmitted('snapshot_form', true);
         // Mirror to n8n for workflows
-        sendToN8n('snapshot_form_submitted', Object.assign({ channel: 'form_snapshot' }, data));
+        sendToN8n('snapshot_form_submitted', Object.assign({
+          channel: 'form_snapshot',
+          lead_type: leadType,
+          qualification_score: qualificationScore,
+          routing_queue: routingQueue
+        }, data));
 
         // WhatsApp click-to-chat (opens a chat with prefilled info)
         if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
           const msg = encodeURIComponent(
-            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
+            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nProject type: ${data.project_type || ''}\nTimeline: ${data.timeline || ''}\nLead type: ${leadType}\nQualification score: ${qualificationScore}\nRouting queue: ${routingQueue}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
           );
           window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
         }
