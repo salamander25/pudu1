@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sol Solar Solutions | Get Your Solar Quote</title>
+  <meta name="description" content="Get a fast solar quote from Sol Solar Solutions. Optional SMS updates with clear opt-out terms." />
+  <style>
+    :root { --bg:#0b1020; --card:#111a30; --text:#e8eefc; --muted:#9eb0d4; --accent:#f5b700; --line:#263454; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:linear-gradient(180deg,#0a1020,#0f1830); color:var(--text); }
+    .wrap { max-width:720px; margin:0 auto; padding:24px 16px 48px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
+    h1 { margin:0 0 8px; font-size:clamp(1.5rem,4vw,2rem); }
+    p { color:var(--muted); margin:0 0 16px; }
+    form { display:grid; gap:12px; }
+    input[type="text"], input[type="tel"] { width:100%; padding:12px; border-radius:10px; border:1px solid var(--line); background:#0d1428; color:var(--text); }
+    .consent { display:flex; gap:10px; align-items:flex-start; font-size:.9rem; color:var(--muted); }
+    .consent input { margin-top:2px; }
+    button { border:0; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer; background:var(--accent); color:#1d1400; }
+    button:disabled { opacity:.6; cursor:not-allowed; }
+    .meta { margin-top:12px; font-size:.85rem; color:var(--muted); display:flex; gap:12px; flex-wrap:wrap; }
+    a { color:#b8d5ff; }
+    .status { margin-top:10px; font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Lower Your Power Bill With Solar</h1>
+      <p>Tell us about your property and we’ll send a personalized quote. SMS consent is optional.</p>
+
+      <form id="leadForm">
+        <input type="text" name="first_name" placeholder="First name" required />
+        <input type="text" name="last_name" placeholder="Last name" required />
+        <input type="tel" name="phone" placeholder="Phone" required />
+        <input type="text" name="address" placeholder="Service address" required />
+
+        <label class="consent">
+          <input type="checkbox" name="consent" value="true" />
+          <span>
+            By submitting, you agree to receive SMS messages from Sol Solar Solutions LLC regarding your inquiry, appointments, and offers. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out. Reply HELP for help.
+          </span>
+        </label>
+
+        <button type="submit">Get My Solar Quote</button>
+      </form>
+
+      <div id="status" class="status" aria-live="polite"></div>
+
+      <div class="meta">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms &amp; Conditions</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const form = document.getElementById('leadForm');
+    const statusEl = document.getElementById('status');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      statusEl.textContent = 'Submitting...';
+
+      const formData = new FormData(form);
+      const payload = {
+        first_name: formData.get('first_name')?.trim(),
+        last_name: formData.get('last_name')?.trim(),
+        phone: formData.get('phone')?.trim(),
+        address: formData.get('address')?.trim(),
+        consent: formData.get('consent') === 'true'
+      };
+
+      try {
+        const response = await fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) throw new Error('Request failed');
+        statusEl.textContent = 'Thanks! Your quote request was received.';
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'Unable to submit right now. Please try again.';
+      }
+    });
+  </script>
+</body>
+</html>
