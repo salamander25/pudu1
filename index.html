@@ -1018,98 +1018,102 @@
                 <input id="name" name="name" required>
               </div>
               <div>
-                <label for="company">Company / Venue Name *</label>
+                <label for="company">Company / Organization *</label>
                 <input id="company" name="company" required>
-              </div>
-              <div>
-                <label for="role">Your Role *</label>
-                <select id="role" name="role" required>
-                  <option value="">Select...</option>
-                  <option>Owner / Partner</option>
-                  <option>General Manager</option>
-                  <option>Director</option>
-                  <option>Operations / Facilities</option>
-                  <option>Other</option>
-                </select>
               </div>
               <div>
                 <label for="email">Email *</label>
                 <input id="email" type="email" name="email" required>
               </div>
               <div>
-                <label for="phone">Mobile / WhatsApp (optional)</label>
-                <input id="phone" name="phone">
+                <label for="phone">Phone *</label>
+                <input id="phone" name="phone" required>
               </div>
               <div>
-                <label for="location">City &amp; State *</label>
-                <input id="location" name="location" required>
-              </div>
-              <div>
-                <label for="type">Business Type *</label>
-                <select id="type" name="type" required>
+                <label for="projectType">Project Type *</label>
+                <select id="projectType" name="projectType" required>
                   <option value="">Select...</option>
-                  <option>Restaurant / Cafe</option>
-                  <option>Hotel / Resort</option>
-                  <option>Hospital / Clinic</option>
-                  <option>Office / Coworking</option>
-                  <option>Event Venue / Nightlife</option>
-                  <option>Other</option>
+                  <option value="Residential Solar">Residential Solar</option>
+                  <option value="Commercial Solar">Commercial Solar</option>
+                  <option value="BESS">BESS</option>
+                  <option value="Data Center">Data Center</option>
                 </select>
               </div>
               <div>
-                <label for="scale">Volume / Scale *</label>
-                <select id="scale" name="scale" required>
+                <label for="monthlyUtilitySpend">Monthly Utility Spend (USD) *</label>
+                <input id="monthlyUtilitySpend" name="monthlyUtilitySpend" type="number" min="0" step="1" required>
+              </div>
+              <div>
+                <label for="buildingSqft">Approx Building Sqft *</label>
+                <input id="buildingSqft" name="buildingSqft" type="number" min="0" step="1" required>
+              </div>
+              <div>
+                <label for="roofType">Roof Type *</label>
+                <select id="roofType" name="roofType" required>
                   <option value="">Select...</option>
-                  <option>Single location pilot</option>
-                  <option>Multi-location (2-5)</option>
-                  <option>Franchise group / chain (6+)</option>
-                  <option>Warehouse / logistics hub</option>
+                  <option value="Flat">Flat</option>
+                  <option value="Pitched">Pitched</option>
+                  <option value="Metal">Metal</option>
+                  <option value="Ground Mount / Carport">Ground Mount / Carport</option>
+                  <option value="Other / Unknown">Other / Unknown</option>
                 </select>
               </div>
               <div>
-                <label for="timeline">Desired timeline *</label>
-                <select id="timeline" name="timeline" required>
-                  <option value="">Select...</option>
-                  <option>ASAP / priority</option>
-                  <option>This month</option>
-                  <option>Next 2-3 months</option>
-                  <option>Exploring / planning</option>
-                </select>
-              </div>
-              <div>
-                <label for="decision">Your role in decision *</label>
-                <select id="decision" name="decision" required>
-                  <option value="">Select...</option>
-                  <option>Final decision maker</option>
-                  <option>Recommender / evaluator</option>
-                  <option>Operations lead</option>
-                  <option>Finance / procurement</option>
-                </select>
-              </div>
-              <div>
-                <label for="idea">Where do you imagine using robots?</label>
-                <textarea id="idea" name="idea"
-                          placeholder="Food running, bottle service, lobby greeting, amenity delivery, etc."></textarea>
+                <label for="serviceState">Service State *</label>
+                <input id="serviceState" name="serviceState" maxlength="2" placeholder="CA" required>
               </div>
               <div class="checkbox-row">
-                <input id="priority" type="checkbox" name="priority">
-                <label for="priority">
-                  I want priority treatment for bulk/franchise/warehouse deployment.
-                </label>
+                <input id="tribalProject" type="checkbox" name="tribalProject">
+                <label for="tribalProject">This is a tribal project</label>
+              </div>
+              <div>
+                <label for="tribalNationAgency">Nation / Agency (if tribal project)</label>
+                <input id="tribalNationAgency" name="tribalNationAgency" placeholder="Example: Navajo Nation Utility Authority">
+              </div>
+              <div>
+                <label for="timeline">Timeline *</label>
+                <select id="timeline" name="timeline" required>
+                  <option value="">Select...</option>
+                  <option value="0-3 months">0-3 months</option>
+                  <option value="3-6 months">3-6 months</option>
+                  <option value="6-12 months">6-12 months</option>
+                  <option value="12+ months">12+ months</option>
+                </select>
+              </div>
+              <div>
+                <label for="decisionAuthority">Decision Authority *</label>
+                <select id="decisionAuthority" name="decisionAuthority" required>
+                  <option value="">Select...</option>
+                  <option value="Final Decision Maker">Final Decision Maker</option>
+                  <option value="Influencer / Recommender">Influencer / Recommender</option>
+                  <option value="Technical Evaluator">Technical Evaluator</option>
+                  <option value="Unknown / Not Yet Assigned">Unknown / Not Yet Assigned</option>
+                </select>
+              </div>
+              <div>
+                <label for="financingPreference">Financing Preference *</label>
+                <select id="financingPreference" name="financingPreference" required>
+                  <option value="">Select...</option>
+                  <option value="Cash Purchase">Cash Purchase</option>
+                  <option value="Loan / Debt">Loan / Debt</option>
+                  <option value="Lease / PPA / ESA">Lease / PPA / ESA</option>
+                  <option value="Undecided">Undecided</option>
+                </select>
+              </div>
+              <div>
+                <label for="notes">Notes / Project Details</label>
+                <textarea id="notes" name="notes" placeholder="Anything else the team should know?"></textarea>
               </div>
               <div class="checkbox-row">
                 <input id="optin" type="checkbox" name="optin">
                 <label for="optin">
-                  I agree to receive emails from Dash Robotics about robotics solutions, case studies, and special
-                  opportunities. I can unsubscribe at any time.
+                  I agree to receive follow-up communications and understand I can unsubscribe anytime.
                 </label>
               </div>
               <div>
-                <button type="submit" class="btn-primary" style="width:100%;">Send My Robotics Snapshot</button>
+                <button type="submit" class="btn-primary" style="width:100%;">Submit Intake</button>
               </div>
-              <div id="success-message" class="success-message">
-                Thank you! Your details have been captured. We'll review and follow up shortly.
-              </div>
+              <div id="success-message" class="success-message"></div>
               <div id="form-status" class="form-status"></div>
             </form>
           </div>
@@ -1400,28 +1404,17 @@
     // Set year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Lead form handler with Formspree + WhatsApp click-to-chat
     const form = document.getElementById('snapshot-form');
     const successMessage = document.getElementById('success-message');
     const statusBox = document.getElementById('form-status');
-    const submitBtn = form.querySelector('button[type=\"submit\"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const INTAKE_ENDPOINT = '/api/intake';
 
-    // Replace with your Formspree endpoint and your WhatsApp number (digits only)
-    const FORM_ENDPOINT = 'https://formspree.io/f/mpwvladr';
-    const WHATSAPP_NUMBER = '19495915731'; // e.g., 15551234567
-    // Optional: your serverless webhook that calls WhatsApp Cloud API
-    const WA_WEBHOOK = 'https://your-serverless-endpoint.example.com/whatsapp-alert'; // replace when ready
-    // Optional: n8n webhook to mirror all CTA + form submissions for workflows
-    const N8N_WEBHOOK = 'https://your-n8n-webhook.example.com/robotics-leads'; // replace when ready
-    // Public counter API for visitors + CTA clicks
     const COUNTAPI_BASE = 'https://api.countapi.xyz/hit/solsolar/';
-    // Store UTM params for attribution
     const utmParams = {};
-    // Rate limit for form submits (ms)
     const MIN_SUBMIT_MS = 5000;
     let lastSubmitAt = 0;
 
-    // Capture UTM params once
     try {
       const params = new URLSearchParams(window.location.search);
       ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'].forEach(function (key) {
@@ -1429,42 +1422,6 @@
         if (val) utmParams[key] = val;
       });
     } catch (e) {}
-
-    function sendToN8n(eventType, payload) {
-      if (!N8N_WEBHOOK || N8N_WEBHOOK.includes('your-n8n-webhook')) return;
-      var leadPayload = Object.assign({
-        event_type: eventType || '',
-        page: typeof window !== 'undefined' ? window.location.pathname + window.location.search : ''
-      }, payload || {});
-      fetch(N8N_WEBHOOK, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(leadPayload)
-      }).catch(function () {
-        console.warn('n8n webhook call failed');
-      });
-    }
-
-    function sendCtaLead(eventType, payload) {
-      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) return;
-      var leadPayload = Object.assign({
-        event_type: eventType || '',
-        page: typeof window !== 'undefined' ? window.location.pathname + window.location.search : '',
-        channel: 'cta'
-      }, utmParams, payload || {});
-      var leadForm = new FormData();
-      Object.keys(leadPayload).forEach(function (key) {
-        leadForm.append(key, leadPayload[key] || '');
-      });
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: leadForm
-      }).catch(function () {
-        console.warn('CTA lead -> Formspree failed');
-      });
-      sendToN8n(eventType, leadPayload);
-    }
 
     function incrementCounter(key, targetId) {
       var el = targetId ? document.getElementById(targetId) : null;
@@ -1475,14 +1432,10 @@
             el.textContent = data.value.toLocaleString();
           }
         })
-        .catch(function () {
-          // Ignore counter failures; keep UI silent
-        });
+        .catch(function () {});
     }
 
-    // Increment visitor counter on load
     incrementCounter('visitors', 'visitor-count');
-    // Seed CTA counter display without incrementing
     fetch('https://api.countapi.xyz/get/solsolar/cta_clicks')
       .then(function (res) { return res.json(); })
       .then(function (data) {
@@ -1493,36 +1446,31 @@
       })
       .catch(function () {});
 
-    // Wire CTA buttons to Formspree + n8n mirrors
-    document.querySelectorAll('[data-analytics=\"whatsapp\"]').forEach(function (el) {
+    document.querySelectorAll('[data-analytics="whatsapp"]').forEach(function (el) {
       el.addEventListener('click', function () {
         var loc = el.getAttribute('data-location') || '';
         var label = el.getAttribute('data-label') || '';
         trackWhatsappClick(loc, label);
-        sendCtaLead('whatsapp_click', { location: loc, label: label, channel: 'whatsapp' });
         incrementCounter('cta_clicks', 'click-count');
       });
     });
-    document.querySelectorAll('[data-analytics=\"calendly\"]').forEach(function (el) {
+    document.querySelectorAll('[data-analytics="calendly"]').forEach(function (el) {
       el.addEventListener('click', function () {
         var loc = el.getAttribute('data-location') || '';
         var label = el.getAttribute('data-label') || '';
         trackCalendlyInitiated(loc, label);
-        sendCtaLead('calendly_initiated', { location: loc, label: label, channel: 'calendly' });
         incrementCounter('cta_clicks', 'click-count');
       });
     });
-    document.querySelectorAll('[data-analytics=\"sms\"]').forEach(function (el) {
+    document.querySelectorAll('[data-analytics="sms"]').forEach(function (el) {
       el.addEventListener('click', function () {
         var loc = el.getAttribute('data-location') || '';
         var label = el.getAttribute('data-label') || '';
         trackSmsClick(loc, label);
-        sendCtaLead('sms_click', { location: loc, label: label, channel: 'sms' });
         incrementCounter('cta_clicks', 'click-count');
       });
     });
 
-    // Lead form start event on first interaction
     let formStarted = false;
     form.addEventListener('focusin', function () {
       if (!formStarted) {
@@ -1533,16 +1481,14 @@
 
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
+      successMessage.style.display = 'none';
       statusBox.style.display = 'none';
       statusBox.textContent = '';
 
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      // Honeypot: block bots
-      if (data.website && data.website.trim()) {
-        return;
-      }
-      // Rate limit rapid re-submits
+      if (data.website && data.website.trim()) return;
+
       const now = Date.now();
       if (now - lastSubmitAt < MIN_SUBMIT_MS) {
         statusBox.textContent = 'Please wait a moment before submitting again.';
@@ -1551,83 +1497,48 @@
         return;
       }
       lastSubmitAt = now;
-      // Append attribution/context
-      formData.append('channel', 'form_snapshot');
-      formData.append('page_url', typeof window !== 'undefined' ? window.location.href : '');
-      Object.keys(utmParams).forEach(function (key) {
-        formData.append(key, utmParams[key] || '');
-        data[key] = utmParams[key] || '';
-      });
 
-      // Guardrail: require a real endpoint
-      if (FORM_ENDPOINT.includes('YOUR_FORM_ID')) {
-        statusBox.textContent = 'Add your Formspree endpoint (FORM_ENDPOINT) to activate submissions.';
+      if (data.tribalProject && !data.tribalNationAgency) {
+        statusBox.textContent = 'Please add the nation/agency for tribal projects.';
         statusBox.className = 'form-status err';
         statusBox.style.display = 'block';
         return;
       }
 
-      // Send to Formspree (email/CRM)
       submitBtn.disabled = true;
       const originalLabel = submitBtn.textContent;
-      submitBtn.textContent = 'Sending...';
+      submitBtn.textContent = 'Submitting...';
 
       try {
-        const response = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData,
+        const payload = Object.assign({}, data, utmParams, {
+          channel: 'form_snapshot',
+          pageUrl: window.location.href
         });
 
-        if (!response.ok) {
-          throw new Error('Form submit failed');
+        const response = await fetch(INTAKE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json().catch(function () { return {}; });
+
+        if (!response.ok || !result.ok) {
+          throw new Error(result.error || 'Submission failed');
         }
 
-        // Hit your WhatsApp Cloud API webhook (serverless) if provided
-        if (WA_WEBHOOK && !WA_WEBHOOK.includes('your-serverless-endpoint')) {
-          fetch(WA_WEBHOOK, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: data.name,
-              company: data.company,
-              role: data.role,
-              email: data.email,
-              phone: data.phone,
-              location: data.location,
-              type: data.type,
-              scale: data.scale,
-              timeline: data.timeline,
-              decision: data.decision,
-              priority: data.priority ? 'Yes' : 'No',
-              idea: data.idea
-            })
-          }).catch(() => {
-            // Best-effort; do not block user on webhook failure
-            console.warn('WhatsApp webhook call failed');
-          });
-        }
-
-        // Success UI
+        const referenceId = result.referenceId || 'N/A';
+        successMessage.textContent = `Thanks! Submission received. Reference ID: ${referenceId}. Our sales team will follow up shortly.`;
         successMessage.style.display = 'block';
         successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
         form.reset();
-        // Track successful lead capture
         trackLeadFormSubmitted('snapshot_form', true);
-        // Mirror to n8n for workflows
-        sendToN8n('snapshot_form_submitted', Object.assign({ channel: 'form_snapshot' }, data));
-
-        // WhatsApp click-to-chat (opens a chat with prefilled info)
-        if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
-          const msg = encodeURIComponent(
-            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
-          );
-          window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
-        }
       } catch (err) {
-        statusBox.textContent = 'Could not send. Please try again or email us directly.';
+        const fallbackRef = 'INTAKE-' + Date.now();
+        statusBox.textContent = `Could not submit right now. Please try again. Reference ID: ${fallbackRef}`;
         statusBox.className = 'form-status err';
         statusBox.style.display = 'block';
+        trackLeadFormSubmitted('snapshot_form', false);
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = originalLabel;
