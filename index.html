@@ -1040,9 +1040,9 @@
                 </label>
               </div>
               <div class="checkbox-row">
-                <input id="optin" type="checkbox" name="optin">
-                <label for="optin">
-                  I agree to receive emails from Sol Solar Solutions about solar + storage options, case studies, and offers. I can unsubscribe at any time.
+                <input id="sms_consent" type="checkbox" name="sms_consent">
+                <label for="sms_consent">
+                  By submitting, you agree to receive SMS from Sol Solar Solutions LLC. Msg & data rates may apply. Reply STOP to opt out.
                 </label>
               </div>
               <div>
@@ -1554,6 +1554,7 @@
               timeline: data.timeline,
               decision: data.decision,
               priority: data.priority ? 'Yes' : 'No',
+              sms_consent: data.sms_consent ? 'Yes' : 'No',
               idea: data.idea
             })
           }).catch(() => {
@@ -1574,7 +1575,7 @@
         // WhatsApp click-to-chat (opens a chat with prefilled info)
         if (WHATSAPP_NUMBER && WHATSAPP_NUMBER !== '15551234567') {
           const msg = encodeURIComponent(
-            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
+            `New lead:\nName: ${data.name || ''}\nCompany: ${data.company || ''}\nRole: ${data.role || ''}\nEmail: ${data.email || ''}\nPhone: ${data.phone || ''}\nLocation: ${data.location || ''}\nType: ${data.type || ''}\nScale: ${data.scale || ''}\nTimeline: ${data.timeline || ''}\nDecision role: ${data.decision || ''}\nPriority: ${data.priority ? 'Yes' : 'No'}\nSMS consent: ${data.sms_consent ? 'Yes' : 'No'}\nUse case: ${data.idea || ''}`
           );
           window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank', 'noopener');
         }
