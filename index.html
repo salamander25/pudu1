@@ -1039,12 +1039,17 @@
                   I want priority treatment for a large or time-sensitive energy project.
                 </label>
               </div>
+              <input type="hidden" id="privacy-policy-url" name="privacy_policy_url" value="https://solsolarsolutions.com/privacy-policy.html">
               <div class="checkbox-row">
                 <input id="sms_consent" type="checkbox" name="sms_consent">
                 <label for="sms_consent">
                   By submitting, you agree to receive SMS from Sol Solar Solutions LLC. Msg & data rates may apply. Reply STOP to opt out.
                 </label>
               </div>
+              <p class="hero-note" style="margin-top:0;">
+                By submitting this form, you acknowledge our
+                <a href="https://solsolarsolutions.com/privacy-policy.html" target="_blank" rel="noreferrer">Privacy Policy</a>.
+              </p>
               <div>
                 <button type="submit" class="btn-primary" style="width:100%;">Request Data Center Review</button>
               </div>
@@ -1506,6 +1511,9 @@
       }
       lastSubmitAt = now;
       // Append attribution/context
+      const privacyPolicyUrl = (data.privacy_policy_url || 'https://solsolarsolutions.com/privacy-policy.html').trim();
+      formData.set('privacy_policy_url', privacyPolicyUrl);
+      data.privacy_policy_url = privacyPolicyUrl;
       formData.append('channel', 'form_snapshot');
       formData.append('page_url', typeof window !== 'undefined' ? window.location.href : '');
       Object.keys(utmParams).forEach(function (key) {
