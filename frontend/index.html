@@ -3,57 +3,258 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sol Solar Solutions | Get Your Solar Quote</title>
-  <meta name="description" content="Get a fast solar quote from Sol Solar Solutions. Optional SMS updates with clear opt-out terms." />
+  <title>Sol Solar Solutions | Solar + Storage Landing Page</title>
+  <meta name="description" content="Explore professional residential and commercial solar solutions from Sol Solar Solutions, and request a fast personalized quote." />
   <style>
-    :root { --bg:#0b1020; --card:#111a30; --text:#e8eefc; --muted:#9eb0d4; --accent:#f5b700; --line:#263454; }
+    :root {
+      --bg: #060b17;
+      --panel: #111a2f;
+      --panel-soft: #121e37cc;
+      --text: #edf3ff;
+      --muted: #a5b5d6;
+      --line: #2b3d64;
+      --accent: #44d49a;
+      --accent-dark: #1e7c5a;
+      --brand: #79b8ff;
+      --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
     * { box-sizing: border-box; }
-    body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:linear-gradient(180deg,#0a1020,#0f1830); color:var(--text); }
-    .wrap { max-width:720px; margin:0 auto; padding:24px 16px 48px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,.25); }
-    h1 { margin:0 0 8px; font-size:clamp(1.5rem,4vw,2rem); }
-    p { color:var(--muted); margin:0 0 16px; }
-    form { display:grid; gap:12px; }
-    input[type="text"], input[type="tel"] { width:100%; padding:12px; border-radius:10px; border:1px solid var(--line); background:#0d1428; color:var(--text); }
-    .consent { display:flex; gap:10px; align-items:flex-start; font-size:.9rem; color:var(--muted); }
-    .consent input { margin-top:2px; }
-    button { border:0; border-radius:10px; padding:12px 16px; font-weight:700; cursor:pointer; background:var(--accent); color:#1d1400; }
-    button:disabled { opacity:.6; cursor:not-allowed; }
-    .meta { margin-top:12px; font-size:.85rem; color:var(--muted); display:flex; gap:12px; flex-wrap:wrap; }
-    a { color:#b8d5ff; }
-    .status { margin-top:10px; font-size:.9rem; }
+    html, body { margin: 0; }
+    body {
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 12% 12%, #14274a 0, transparent 30%),
+                  radial-gradient(circle at 88% 0%, #10382f 0, transparent 20%),
+                  var(--bg);
+      line-height: 1.55;
+    }
+
+    .container { width: min(1120px, 92vw); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(6, 11, 23, 0.82);
+      border-bottom: 1px solid rgba(121, 184, 255, 0.14);
+      z-index: 5;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      color: var(--brand);
+    }
+
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      padding: 64px 0 34px;
+      align-items: stretch;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 4.7vw, 3.4rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .lead { color: var(--muted); max-width: 60ch; }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+
+    .btn {
+      display: inline-block;
+      border: 1px solid transparent;
+      text-decoration: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 600;
+    }
+
+    .btn-primary { background: linear-gradient(135deg, var(--accent), #72f3be); color: #062719; }
+    .btn-secondary { border-color: var(--line); color: var(--text); background: #ffffff0a; }
+
+    .hero-card {
+      background: linear-gradient(180deg, #142446, #0f1b34);
+      border: 1px solid #365485;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .metrics {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid #335179;
+      border-radius: 12px;
+      padding: 12px;
+      background: #0f1f3a;
+    }
+
+    .metric strong { display: block; font-size: 1.18rem; }
+
+    section { padding: 28px 0; }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .quote-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    form { display: grid; gap: 12px; }
+    input[type="text"], input[type="tel"] {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #091429;
+      color: var(--text);
+      padding: 12px;
+      font: inherit;
+    }
+
+    .consent { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); font-size: 0.9rem; }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--accent);
+      color: #05281a;
+    }
+
+    .status { margin-top: 8px; color: var(--muted); font-size: 0.95rem; }
+    footer { padding: 24px 0 48px; color: var(--muted); font-size: 0.9rem; }
+    .links a { color: #c6ddff; margin-right: 12px; }
+
+    @media (max-width: 900px) {
+      .hero, .quote-wrap, .grid-3 { grid-template-columns: 1fr; }
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="card">
-      <h1>Lower Your Power Bill With Solar</h1>
-      <p>Tell us about your property and we’ll send a personalized quote. SMS consent is optional.</p>
+  <header>
+    <div class="container nav">
+      <div class="logo">Sol Solar Solutions</div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#quote">Get Quote</a>
+      </nav>
+    </div>
+  </header>
 
-      <form id="leadForm">
-        <input type="text" name="first_name" placeholder="First name" required />
-        <input type="text" name="last_name" placeholder="Last name" required />
-        <input type="tel" name="phone" placeholder="Phone" required />
-        <input type="text" name="address" placeholder="Service address" required />
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Professional Solar + Storage Solutions for Modern Properties</h1>
+        <p class="lead">From residential rooftops to commercial facilities, we design reliable energy systems that reduce utility costs, improve resilience, and prepare you for long-term growth.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#quote">Get My Custom Quote</a>
+          <a class="btn btn-secondary" href="#services">View Services</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h3>Trusted Process</h3>
+        <p>Consultation-first planning, transparent pricing, and clean installation execution.</p>
+        <div class="metrics">
+          <div class="metric"><strong>25+</strong><span>Years Combined Experience</span></div>
+          <div class="metric"><strong>48 hrs</strong><span>Typical Proposal Turnaround</span></div>
+          <div class="metric"><strong>100%</strong><span>Custom System Design</span></div>
+        </div>
+      </aside>
+    </section>
 
-        <label class="consent">
-          <input type="checkbox" name="consent" value="true" />
-          <span>
-            By submitting, you agree to receive SMS from Sol Solar Solutions LLC. Msg &amp; data rates may apply. Reply STOP to opt out.
-          </span>
-        </label>
-
-        <button type="submit">Get My Solar Quote</button>
-      </form>
-
-      <div id="status" class="status" aria-live="polite"></div>
-
-      <div class="meta">
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms &amp; Conditions</a>
+    <section id="services">
+      <h2>What We Deliver</h2>
+      <div class="grid-3">
+        <article class="card"><h3>Residential Solar</h3><p>High-efficiency rooftop systems tailored to your home load profile and long-term utility goals.</p></article>
+        <article class="card"><h3>Commercial & Industrial</h3><p>Scalable projects with usage analysis, financing guidance, and streamlined deployment.</p></article>
+        <article class="card"><h3>Battery Storage</h3><p>Backup and peak-shaving solutions to increase energy security and optimize operating costs.</p></article>
       </div>
     </section>
+
+    <section id="why-us">
+      <h2>Why Property Owners Choose Sol Solar</h2>
+      <div class="grid-3">
+        <article class="card"><h3>Data-Driven Planning</h3><p>We evaluate load history and site conditions before recommending system sizing.</p></article>
+        <article class="card"><h3>Clear Communication</h3><p>You get straightforward timelines, documentation, and milestone updates.</p></article>
+        <article class="card"><h3>Long-Term Partnership</h3><p>Our team supports permitting, interconnection, and post-install performance optimization.</p></article>
+      </div>
+    </section>
+
+    <section id="quote" class="quote-wrap">
+      <article class="card">
+        <h2>Request Your Solar Quote</h2>
+        <p class="lead">Share basic project information and our team will follow up with a personalized proposal.</p>
+      </article>
+
+      <article class="card">
+        <form id="leadForm">
+          <input type="text" name="first_name" placeholder="First name" required />
+          <input type="text" name="last_name" placeholder="Last name" required />
+          <input type="tel" name="phone" placeholder="Phone" required />
+          <input type="text" name="address" placeholder="Service address" required />
+
+          <label class="consent">
+            <input type="checkbox" name="consent" value="true" />
+            <span>By submitting, you agree to receive SMS updates from Sol Solar Solutions LLC. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+          </label>
+
+          <button type="submit">Submit Quote Request</button>
+        </form>
+        <div id="status" class="status" aria-live="polite"></div>
+      </article>
+    </section>
   </main>
+
+  <footer class="container">
+    <div class="links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+    </div>
+  </footer>
 
   <script>
     const form = document.getElementById('leadForm');
@@ -61,7 +262,7 @@
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      statusEl.textContent = 'Submitting...';
+      statusEl.textContent = 'Submitting your request...';
 
       const formData = new FormData(form);
       const payload = {
@@ -80,10 +281,11 @@
         });
 
         if (!response.ok) throw new Error('Request failed');
-        statusEl.textContent = 'Thanks! Your quote request was received.';
+
+        statusEl.textContent = 'Thank you. Your quote request has been received.';
         form.reset();
       } catch (err) {
-        statusEl.textContent = 'Unable to submit right now. Please try again.';
+        statusEl.textContent = 'We could not submit right now. Please try again shortly.';
       }
     });
   </script>
